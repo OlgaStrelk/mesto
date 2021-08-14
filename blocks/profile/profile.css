@@ -1,4 +1,7 @@
 .profile {
-    display: flex;
-    justify-content: space-between;
+    margin: 40px 0 51px;
+    display: grid;
+    grid-template-columns: 120px 336px 1fr;
+    grid-template-rows: 62px 43px;
+    grid-gap: 16px 30px;
 }
