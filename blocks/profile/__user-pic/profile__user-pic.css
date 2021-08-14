@@ -1,9 +1,9 @@
 .profile__user-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 60px;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }

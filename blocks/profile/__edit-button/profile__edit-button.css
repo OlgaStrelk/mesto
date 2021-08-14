@@ -1,11 +1,11 @@
 .profile__edit-button {
-    width: 24px;
-    height: 24px;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    align-self: end;
-    box-sizing: border-box;
-    background: center center no-repeat url('../../../images/edit_button.svg');
-    border: 1px solid white;
+  width: 24px;
+  height: 24px;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: end;
+  box-sizing: border-box;
+  background: center center no-repeat url("../../../images/edit_button.svg");
+  border: 1px solid white;
 }

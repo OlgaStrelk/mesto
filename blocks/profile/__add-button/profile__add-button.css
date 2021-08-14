@@ -1,12 +1,12 @@
 .profile__add-button {
-    grid-column: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    width: 150px;
-    height: 50px;
-    justify-self: end;
-    align-self: center;
-    box-sizing: border-box;
-    background: center center no-repeat url('../../../images/add-button.svg');
-    border: 2px solid white;
+  grid-column: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 150px;
+  height: 50px;
+  justify-self: end;
+  align-self: center;
+  box-sizing: border-box;
+  background: center center no-repeat url("../../../images/add-button.svg");
+  border: 2px solid white;
 }
