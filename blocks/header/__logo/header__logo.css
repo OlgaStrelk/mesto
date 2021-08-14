@@ -1,4 +1,6 @@
 .header__logo {
+    margin: 0;
     height: 33px;
     width: 142px;
+    padding-bottom: 41px;
 }

@@ -1,3 +1,5 @@
 .header {
     border-bottom: 1px solid white;
+    display: flex;
+    justify-content: flex-start;
 }
