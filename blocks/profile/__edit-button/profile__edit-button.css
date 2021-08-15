@@ -8,4 +8,5 @@
   box-sizing: border-box;
   background: center center no-repeat url("../../../images/edit_button.svg");
   border: 1px solid white;
+  margin-bottom: 9px;
 }

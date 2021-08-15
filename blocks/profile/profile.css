@@ -1,7 +1,7 @@
 .profile {
     margin: 40px 0 51px;
     display: grid;
-    grid-template-columns: 120px 336px 1fr;
-    grid-template-rows: 62px 43px;
-    grid-gap: 16px 30px;
+    grid-template-columns: 120px minmax(336px, 1.3fr) 1fr;
+    grid-template-rows: 72px 43px;
+    grid-gap: 6px 30px;
 }
