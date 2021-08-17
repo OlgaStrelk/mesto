@@ -8,3 +8,13 @@
   justify-self: start;
   align-self: end;
 }
+
+@media screen and (max-width: 596px) {
+.profile__name {
+  font-size: 27px;
+  line-height: 32.68px;
+  align-self: center;
+  justify-self: center;
+  grid-row: 2;
+  grid-column: 1;
+}

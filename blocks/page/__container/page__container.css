@@ -1,4 +1,10 @@
 .page__container {
-    margin: 0;
-    padding: 45px 200px 60px;
+  margin: 0 auto;
+  max-width: calc(1280px - 200px * 2);
+  padding: 45px 0 60px;
 }
+
+@media screen and (max-width: 596px) {
+  .page__container {
+    padding: 28px 0;
+  }
