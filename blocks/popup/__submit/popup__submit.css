@@ -9,6 +9,13 @@
     padding: calc((50px - 21.78px) / 2);
     margin-top: 18px;
     border: none;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.popup__submit:hover {
+    opacity: 0.8;
+    transition: opacity 1s linear;
 }
 
 @media screen and (max-width: 596px) {
