@@ -1,11 +1,8 @@
 .popup__container {
   background-color: white;
   color: black;
-  position: absolute;
   width: 430px;
-  height: 330px;
-  top: calc((100% - 330px) / 2);
-  left: calc((100% - 430px) / 2);
+  min-height: 330px;
   border-radius: 10px;
   padding: 34px 36px 37px;
   box-sizing: border-box;
@@ -14,9 +11,7 @@
 @media screen and (max-width: 596px) {
   .popup__container {
     width: 282px;
-    height: 322px;
+    min-height: 322px;
     padding: 25px 22px;
-    top: calc((100% - 322px) / 2);
-    left: calc((100% - 282px) / 2);
   }
 }
