@@ -1,0 +1,7 @@
+.popup__field {
+    margin: 0;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    opacity: 0.2;
+}

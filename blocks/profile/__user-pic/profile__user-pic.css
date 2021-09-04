@@ -1,0 +1,18 @@
+.profile__user-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 60px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+@media screen and (max-width: 596px) {
+  .profile__user-pic {
+    grid-row: 1;
+    justify-self: center;
+    padding-bottom: 12px;
+  }
+}

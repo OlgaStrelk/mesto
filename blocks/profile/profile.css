@@ -1,0 +1,25 @@
+.profile {
+  margin: 40px 0 51px;
+  display: grid;
+  grid-template-columns: 120px minmax(336px, 1.3fr) 1fr;
+  grid-template-rows: 72px 43px;
+  grid-gap: 6px 30px;
+}
+
+@media screen and (max-width: 979px) {
+  .profile {
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 72px 43px 50px;
+    padding: 0 calc((100% - 282px * 2 - 17px) / 2);
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .profile {
+    padding: 0 calc((100% - 282px) / 2);
+    grid-template-columns: 1fr;
+    grid-template-rows: 132px 26px 14px 108px;
+    gap: 14px;
+    margin: 42px 0 0;
+  }
+}

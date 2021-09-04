@@ -1,0 +1,11 @@
+.cards__caption {
+    margin: 0;
+    height: 76px;
+    box-sizing: border-box;
+    padding-top: 25px;
+    padding-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 282px;
+}
