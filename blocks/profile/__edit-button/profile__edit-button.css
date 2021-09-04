@@ -9,6 +9,12 @@
   background: center center no-repeat url("../../../images/edit_button.svg");
   border: 1px solid white;
   margin-bottom: 9px;
+  opacity: 1;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
+  transition: opacity 1s linear;
 }
 
 @media screen and (max-width: 596px) {
