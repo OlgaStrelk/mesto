@@ -11,6 +11,10 @@
   border: 2px solid white;
 }
 
+.profile__add-button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 979px) {
 .profile__add-button {
   grid-column: 2;
