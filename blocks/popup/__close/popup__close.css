@@ -1,18 +1,18 @@
 .popup__close {
   padding: 0;
   position: absolute;
-  top: -26px;
-  right: -26px;
+  top: -65px;
+  right: -32px;
   width: 32px;
   height: 32px;
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  font-size: 32px;
+  font-size: 64px;
   opacity: 1;
+  transition: opacity 1s linear;
 }
 
 .popup__close:hover {
   opacity: 0.6;
-  transition: opacity 1s linear;
 }
