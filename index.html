@@ -20,14 +20,14 @@
         <main>
           <section class="profile">
             <h1 class="profile__name">Оля Стрелкова</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" aria-label="Редактировать профиль"></button>
             <p class="profile__description">Искусствоведка-исследовательница</p>
             <img
               class="profile__user-pic"
               src="./images/user-pic.jpeg"
               alt="Детская фотография снятая Микеланджело Антониони"
             />
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" aria-label="Добавить картинку"></button>
           </section>
           <section class="gallery">
             <ul class="cards">
@@ -39,7 +39,7 @@
                 />
                 <div class="cards__caption">
                   <h2 class="cards__title">Рейкьявик</h2>
-                  <button class="cards__like"></button>
+                  <button class="cards__like aria-label="Нравится""></button>
                 </div>
               </li>
               <li class="cards__item">
@@ -50,7 +50,7 @@
                 />
                 <div class="cards__caption">
                   <h2 class="cards__title">Нью-Йорк</h2>
-                  <button class="cards__like"></button>
+                  <button class="cards__like" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="cards__item">
@@ -61,7 +61,7 @@
                 />
                 <div class="cards__caption">
                   <h2 class="cards__title">Москва</h2>
-                  <button class="cards__like"></button>
+                  <button class="cards__like" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="cards__item">
@@ -72,7 +72,7 @@
                 />
                 <div class="cards__caption">
                   <h2 class="cards__title">Каир</h2>
-                  <button class="cards__like"></button>
+                  <button class="cards__like" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="cards__item">
@@ -83,7 +83,7 @@
                 />
                 <div class="cards__caption">
                   <h2 class="cards__title">Польша</h2>
-                  <button class="cards__like"></button>
+                  <button class="cards__like" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="cards__item">
@@ -93,7 +93,7 @@
                   class="cards__image"
                 />
                 <div class="cards__caption">
-                  <h2 class="cards__title">Варшава</h2>
+                  <h2 class="cards__title" aria-label="Нравится">Варшава</h2>
                   <button class="cards__like"></button>
                 </div>
               </li>
@@ -105,7 +105,7 @@
         </footer>
         <div class="popup">
           <div class="popup__container">
-            <button type="button" class="popup__close">&times;</button>
+            <button type="button" class="popup__close" aria-label="Закрыть">&times;</button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="edit-form" class="popup__form">
               <input
@@ -118,7 +118,7 @@
                 name="occupation"
                 class="popup__field popup__field_type_job"
               />
-              <button type="submit" class="popup__submit">Сохранить</button>
+              <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
             </form>
           </div>
         </div>

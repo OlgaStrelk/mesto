@@ -11,8 +11,17 @@
   font-size: 64px;
   opacity: 1;
   transition: opacity 1s linear;
+  cursor: pointer;
 }
 
 .popup__close:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 596px) {
+  .popup__close {
+    font-size: 44px;
+    right: -5px;
+    top: -55px;
+  }
 }

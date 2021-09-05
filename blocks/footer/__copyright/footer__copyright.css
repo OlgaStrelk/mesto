@@ -10,6 +10,6 @@
   .footer__copyright {
     font-size: 14px;
     line-height: 16.94px;
-    padding-left: 27px;
+    padding-left: calc((100% - 282px) / 2);
   }
 }

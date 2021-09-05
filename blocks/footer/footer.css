@@ -1,7 +1,13 @@
 .footer {
-    margin: 0;
-    padding: 0;
-    padding-top: 67px;
-    display: flex;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 67px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 596px) {
+  .footer {
+    padding-top: 48px;
+  }
 }

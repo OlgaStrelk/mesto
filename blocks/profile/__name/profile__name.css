@@ -7,6 +7,9 @@
   grid-row: 1;
   justify-self: start;
   align-self: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 596px) {

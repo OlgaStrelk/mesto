@@ -1,10 +1,11 @@
 .popup__field {
-    margin: 0;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16.94px;
+  margin: 0;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+  padding-bottom: 13px;
 }

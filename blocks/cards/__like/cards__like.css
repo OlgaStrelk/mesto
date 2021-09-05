@@ -7,6 +7,7 @@
     border: none;
     opacity: 1;
     transition: opacity 1s linear;
+    cursor: pointer;
 }
 
 .cards__like:hover {
