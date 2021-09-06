@@ -5,10 +5,10 @@ let form = document.querySelector(".popup__form"); //форма заполнен
 
 let nameInputPopup = document.querySelector(".popup__field_type_name"); //имя в форме
 let jobInputPopup = document.querySelector(".popup__field_type_job"); //род деятельности в форме
-let profileName = document.querySelector(".profile__name"); //имя в шапке
+let profileName = document.querySelector(".profile__title"); //имя в шапке
 let profileJob = document.querySelector(".profile__description"); //род деятельности в шапке
 
-//функция переключения попапа с подгрузкой имени и рода деятельности из шапки
+//функция переключения попапа с подгрузкой имени и рода деятельности из шапки и замена имени и рода деятельности после закрытия
 function togglePopup() {
   if (!popup.classList.contains("popup_is-opened")) {
     nameInputPopup.value = profileName.textContent;
