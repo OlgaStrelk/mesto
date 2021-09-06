@@ -1,6 +1,6 @@
 .cards__caption {
     margin: 0;
-    height: 76px;
+    min-height: 76px;
     box-sizing: border-box;
     padding-top: 25px;
     padding-bottom: 32px;

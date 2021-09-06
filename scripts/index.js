@@ -13,6 +13,9 @@ function togglePopup() {
   if (!popup.classList.contains("popup_is-opened")) {
     nameInputPopup.value = profileName.textContent;
     jobInputPopup.value = profileJob.textContent;
+  } else {
+    profileName.textContent = nameInputPopup.value;
+    profileJob.textContent = jobInputPopup.value;
   }
   popup.classList.toggle("popup_is-opened");
 }
@@ -23,10 +26,11 @@ editProfileButton.addEventListener("click", togglePopup);
 //событие переключения состояния при нажатии кнопки закрыть форму
 closePopupButton.addEventListener("click", togglePopup);
 
-//заполнение профиля из инпутов при сабмите формы
-form.addEventListener("submit", function (event) {
+//отправка формы без действия по умолчанию
+function formSubmit(event) {
   event.preventDefault();
   togglePopup();
-  profileName.textContent = nameInputPopup.value;
-  profileJob.textContent = jobInputPopup.value;
-});
+}
+
+//заполнение профиля из инпутов при сабмите формы
+form.addEventListener("submit", formSubmit);

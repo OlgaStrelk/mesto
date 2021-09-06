@@ -1,14 +1,13 @@
 .popup__close {
   padding: 0;
   position: absolute;
-  top: -65px;
-  right: -32px;
-  width: 32px;
-  height: 32px;
+  top: -73px;
+  right: -47px;
+  font-weight: 300;
+  font-size: 74px;
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  font-size: 64px;
   opacity: 1;
   transition: opacity 1s linear;
   cursor: pointer;
@@ -20,8 +19,8 @@
 
 @media screen and (max-width: 596px) {
   .popup__close {
-    font-size: 44px;
-    right: -5px;
-    top: -55px;
+    font-size: 48px;
+    right: -6px;
+    top: -57px;
   }
 }
