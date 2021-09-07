@@ -13,9 +13,6 @@ function togglePopup() {
   if (!popup.classList.contains("popup_is-opened")) {
     nameInputPopup.value = profileName.textContent;
     jobInputPopup.value = profileJob.textContent;
-  } else {
-    profileName.textContent = nameInputPopup.value;
-    profileJob.textContent = jobInputPopup.value;
   }
   popup.classList.toggle("popup_is-opened");
 }
@@ -29,6 +26,8 @@ closePopupButton.addEventListener("click", togglePopup);
 //отправка формы без действия по умолчанию
 function formSubmit(event) {
   event.preventDefault();
+  profileName.textContent = nameInputPopup.value;
+  profileJob.textContent = jobInputPopup.value;
   togglePopup();
 }
 
