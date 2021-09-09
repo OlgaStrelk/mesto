@@ -17,7 +17,7 @@
             alt="Логотип Mesto Russia"
           />
         </header>
-        <main>
+        <main class="content">
           <section class="profile">
             <div class="profile__name">
               <h1 class="profile__title">Оля Стрелкова</h1>
@@ -39,100 +39,10 @@
               aria-label="Добавить новое место"
             ></button>
           </section>
-          <section class="gallery">
-            <ul class="cards">
-              <li class="cards__item">
-                <img
-                  src="https://3pulse.com/uploads/photo/19/99/00/2020/01/22/0230dba935.jpg"
-                  alt="лютеранская церковь Хатльгримскиркья"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Рейкьявик</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="cards__item">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/83/The_Vessel_%28top-down_view%29%2C_Hudson_Yards%2C_New_York_City%2C_July_2019.jpg"
-                  alt="общественное пространство Хезервика"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Нью-Йорк</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="cards__item">
-                <img
-                  src="https://sakhalife.photo/wp-content/uploads/2021/03/osobnyak-morozova-2-500x357.jpg"
-                  alt="Особняк Морозова на Воздвиженке"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Москва</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="cards__item">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Cairo_Tower_2011.JPG/135px-Cairo_Tower_2011.JPG"
-                  alt="Телебашня"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Каир</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="cards__item">
-                <img
-                  src="https://a.d-cd.net/_EAAAgGPvuA-1920.jpg"
-                  alt="Собор святого Стефана"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Польша</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="cards__item">
-                <img
-                  src="https://sun1-91.userapi.com/impg/M5S73LAXKDwX6GyiATXIncCdOm5H40RnvNa_qg/FnYxClBR-_g.jpg?size=400x0&quality=96&crop=0,310,800,800&sign=d4d75b019872627b1290ea176f891348&ava=1"
-                  alt="Небоскребы на закате"
-                  class="cards__image"
-                />
-                <div class="cards__caption">
-                  <h2 class="cards__title">Варшава</h2>
-                  <button
-                    class="cards__like"
-                    type="button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-            </ul>
+          
+          <section class="cards">
           </section>
+          
         </main>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
@@ -145,7 +55,7 @@
               aria-label="Закрыть"
             ></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="edit-form" class="popup__form">
+            <form name="edit-form" class="popup__form  popup__form_type_profile">
               <input
                 type="text"
                 name="name"
@@ -175,7 +85,7 @@
               aria-label="Закрыть"
             ></button>
             <h2 class="popup__title">Новое место</h2>
-            <form name="edit-form" class="popup__form">
+            <form name="edit-form" class="popup__form popup__form_type_add-card">
               <input
                 type="text"
                 name="place"
@@ -196,8 +106,31 @@
             </form>
           </div>
         </div>
+
+        <div class="popup popup_type_bigcard">
+
+        </div>
       </div>
     </div>
+
+    <template id="card-template">
+      <div class="cards__item"> 
+      <img
+        src=""
+        alt=""
+        class="cards__image"
+      />
+      <div class="cards__caption">
+        <h2 class="cards__title"></h2>
+        <button
+          class="cards__like"
+          type="button"
+          aria-label="Нравится"
+        ></button>
+      </div>
+    </div>
+    </template>
+
     <script src="scripts/index.js"></script>
   </body>
 </html>
