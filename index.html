@@ -39,10 +39,8 @@
               aria-label="Добавить новое место"
             ></button>
           </section>
-          
-          <section class="cards">
-          </section>
-          
+
+          <section class="cards"></section>
         </main>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
@@ -55,7 +53,7 @@
               aria-label="Закрыть"
             ></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="edit-form" class="popup__form  popup__form_type_profile">
+            <form name="edit-form" class="popup__form popup__form_type_profile">
               <input
                 type="text"
                 name="name"
@@ -85,11 +83,14 @@
               aria-label="Закрыть"
             ></button>
             <h2 class="popup__title">Новое место</h2>
-            <form name="edit-form" class="popup__form popup__form_type_add-card">
+            <form
+              name="edit-form"
+              class="popup__form popup__form_type_add-card"
+            >
               <input
                 type="text"
                 name="place"
-                class="popup__field "
+                class="popup__field"
                 id="form-field-place"
                 placeholder="Название"
               />
@@ -107,28 +108,23 @@
           </div>
         </div>
 
-        <div class="popup popup_type_bigcard">
-
-        </div>
+        <div class="popup popup_type_bigcard"></div>
       </div>
     </div>
 
     <template id="card-template">
-      <div class="cards__item"> 
-      <img
-        src=""
-        alt=""
-        class="cards__image"
-      />
-      <div class="cards__caption">
-        <h2 class="cards__title"></h2>
-        <button
-          class="cards__like"
-          type="button"
-          aria-label="Нравится"
-        ></button>
+      <div class="cards__item">
+        <img src="" alt="" class="cards__image"/>
+        <div class="cards__remove"></div>
+        <div class="cards__caption">
+          <h2 class="cards__title"></h2>
+          <button
+            class="cards__like"
+            type="button"
+            aria-label="Нравится"
+          ></button>
+        </div>
       </div>
-    </div>
     </template>
 
     <script src="scripts/index.js"></script>

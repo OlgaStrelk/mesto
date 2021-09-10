@@ -1,0 +1,9 @@
+.cards__remove {
+  position: absolute;
+  z-index:1;
+  background: center center no-repeat url("../../../images/remove.svg");
+  height: 32px;
+  width: 32px;
+  top: 8px;
+  right: 4px;
+}

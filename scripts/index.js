@@ -20,6 +20,8 @@ const postsElement = document.querySelector(".cards");
 const placeInputPopup = document.querySelector("#form-field-place");
 const linkInputPopup = document.querySelector("#form-field-link");
 
+const postRemove = document.querySelector(".cards__remove");
+
 const initialCards = [
   {
     name: "Рейкьявик",
@@ -85,7 +87,7 @@ function formSubmit(event) {
   togglePopup();
 }
 
-function formProfileSubmit(event) {
+function formProfileSubmit() {
   profileName.textContent = nameInputPopup.value;
   profileJob.textContent = jobInputPopup.value;
   formSubmit;
@@ -95,13 +97,15 @@ initialCards.forEach((card) => {
   addPost(card);
 });
 
-function formPostSubmit(event) {
+function formPostSubmit(nameInput, aboutInput) {
   formSubmit;
   addPost({
-    name: placeInputPopup.textContent,
-    data: linkInputPopup.value,
+    name: nameInput.textContent,
+    data: aboutInput.value,
   });
 }
 
 //заполнение профиля из инпутов при сабмите формы
 formProfile.addEventListener("submit", formProfileSubmit);
+
+formPost.addEventListener("submit", formPostSubmit);
