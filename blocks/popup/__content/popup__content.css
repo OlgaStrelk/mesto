@@ -1,0 +1,6 @@
+.popup__content {
+    max-height: 75vh;
+    max-width: 75vw;
+    height: auto;
+    width: auto;
+}

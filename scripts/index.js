@@ -1,26 +1,26 @@
 const editProfileButton = document.querySelector(".profile__edit-button"); //кнопка редактирования профайла
-const addPostButton = document.querySelector(".profile__add-button"); //кнопка добавления своего места
+const addCardButton = document.querySelector(".profile__add-button"); //кнопка добавления своего места
 
 const popupProfile = document.querySelector(".popup_type_profile"); //попап профиля
-const popupPost = document.querySelector(".popup_type_add-card");
+const popupCard = document.querySelector(".popup_type_add-card");
 
 const closeProfileButton = document.querySelector(".popup__close_type_profile"); //закрытие попапа
-const closePostButton = document.querySelector(".popup__close_type_add-card");
+const closeCardButton = document.querySelector(".popup__close_type_add-card");
 
 const formProfile = document.querySelector(".popup__form_type_profile"); //форма заполнения профиля
-const formPost = document.querySelector(".popup__form_type_add-card");
+const formCard = document.querySelector(".popup__form_type_add-card");
 
 const nameInputPopup = document.querySelector(".popup__field_type_name"); //имя в форме
 const jobInputPopup = document.querySelector(".popup__field_type_job"); //род деятельности в форме
 const profileName = document.querySelector(".profile__title"); //имя в шапке
 const profileJob = document.querySelector(".profile__description"); //род деятельности в шапке
 
-const postTemplate = document.querySelector("#card-template").content;
-const postsElement = document.querySelector(".cards");
+const cardTemplate = document.querySelector("#card-template").content;
+const cardsContainer = document.querySelector(".cards");
 const placeInputPopup = document.querySelector("#form-field-place");
 const linkInputPopup = document.querySelector("#form-field-link");
 
-const postRemove = document.querySelector(".cards__remove");
+const cardRemove = document.querySelector(".cards__remove");
 
 const initialCards = [
   {
@@ -49,42 +49,49 @@ const initialCards = [
   },
 ];
 
-const addPost = (data) => {
-  const postElement = postTemplate
+const createCard = (data) => {
+  const cardElement = cardTemplate
     .querySelector(".cards__item")
     .cloneNode(true);
-  postElement.querySelector(".cards__title").textContent = data.name;
-  postElement.querySelector(".cards__image").src = data.link;
-
-  postsElement.prepend(postElement);
+  cardElement.querySelector(".cards__title").textContent = data.name;
+  cardElement.querySelector(".cards__image").src = data.link;
+  return cardElement;
 };
 
-//функция переключения попапа
+const renderCard = (data) => {
+  const cardElement = createCard(data);
+  cardsContainer.prepend(cardElement);
+};
+
+initialCards.forEach((card) => {
+  renderCard(card);
+});
+
+function formSubmit(event) {
+  event.preventDefault();
+  togglePopup();
+}
+
+function formCardSubmit() {
+  formSubmit;
+  renderCard(data);
+  data = {
+      name: placeInputPopup.value,
+      link: linkInputPopup.value,
+    }
+  ;
+}
+
+formCard.addEventListener("submit", formCardSubmit);
+
 function togglePopup(popupName) {
   popupName.classList.toggle("popup_is-opened");
 }
 
-//открытие с подгрузкой имени и рода деятельности из шапки и замена имени и рода деятельности после закрытия
-function OpenProfilePopup() {
+function openProfilePopup() {
   nameInputPopup.value = profileName.textContent;
   jobInputPopup.value = profileJob.textContent;
   togglePopup(popupProfile);
-}
-
-//событие переключения состояния при нажатии кнопки редактировать форму
-editProfileButton.addEventListener("click", OpenProfilePopup);
-
-addPostButton.addEventListener("click", () => togglePopup(popupPost));
-
-//событие переключения состояния при нажатии кнопки закрыть форму
-closeProfileButton.addEventListener("click", () => togglePopup(popupProfile));
-
-closePostButton.addEventListener("click", () => togglePopup(popupPost));
-
-//отправка формы без действия по умолчанию
-function formSubmit(event) {
-  event.preventDefault();
-  togglePopup();
 }
 
 function formProfileSubmit() {
@@ -93,19 +100,30 @@ function formProfileSubmit() {
   formSubmit;
 }
 
-initialCards.forEach((card) => {
-  addPost(card);
+//Handlers
+editProfileButton.addEventListener("click", openProfilePopup);
+
+addCardButton.addEventListener("click", () => {
+  togglePopup(popupCard);
 });
 
-function formPostSubmit(nameInput, aboutInput) {
-  formSubmit;
-  addPost({
-    name: nameInput.textContent,
-    data: aboutInput.value,
-  });
-}
+closeProfileButton.addEventListener("click", () => {
+  togglePopup(popupProfile);
+});
 
-//заполнение профиля из инпутов при сабмите формы
+closeCardButton.addEventListener("click", () => {
+  togglePopup(popupCard);
+});
+
 formProfile.addEventListener("submit", formProfileSubmit);
 
-formPost.addEventListener("submit", formPostSubmit);
+//Image enlarged
+
+const popupImage = document.querySelector(".popup_type_big-image");
+const cardImage = document.querySelectorAll(".cards__image");
+const popupImageElement = document.querySelector(".popup__image");
+
+/*cardImage.addEventListener('click', (event) => {
+  popupImageElement.src = event.target.src;
+  togglePopup(popupImage);
+});*/

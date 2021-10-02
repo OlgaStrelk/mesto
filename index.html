@@ -42,9 +42,11 @@
 
           <section class="cards"></section>
         </main>
+        
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
         </footer>
+        
         <div class="popup popup_type_profile">
           <div class="popup__container">
             <button
@@ -108,7 +110,17 @@
           </div>
         </div>
 
-        <div class="popup popup_type_bigcard"></div>
+        <div class="popup popup_type_big-image">
+          <button
+          type="button"
+          class="popup__close popup__close_type_big-image"
+          aria-label="Закрыть"
+        ></button>          
+        <div class="popup__content">
+          <img class="popup__image" src="">
+          <p class="popup__caption"></p>
+        </div>
+        </div>
       </div>
     </div>
 
