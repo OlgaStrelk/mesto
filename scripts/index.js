@@ -1,26 +1,32 @@
-const editProfileButton = document.querySelector(".profile__edit-button"); //кнопка редактирования профайла
-const addCardButton = document.querySelector(".profile__add-button"); //кнопка добавления своего места
-
-const popupProfile = document.querySelector(".popup_type_profile"); //попап профиля
-const popupCard = document.querySelector(".popup_type_add-card");
-
-const closeProfileButton = document.querySelector(".popup__close_type_profile"); //закрытие попапа
+//buttons
+const editProfileButton = document.querySelector(".profile__edit-button");
+const addCardButton = document.querySelector(".profile__add-button");
+const closeProfileButton = document.querySelector(".popup__close_type_profile");
 const closeCardButton = document.querySelector(".popup__close_type_add-card");
 
-const formProfile = document.querySelector(".popup__form_type_profile"); //форма заполнения профиля
+//popups
+const popupProfile = document.querySelector(".popup_type_profile");
+const popupCard = document.querySelector(".popup_type_add-card");
+const popupImage = document.querySelector(".popup_type_big-image");
+
+//forms
+const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
 
-const nameInputPopup = document.querySelector(".popup__field_type_name"); //имя в форме
-const jobInputPopup = document.querySelector(".popup__field_type_job"); //род деятельности в форме
-const profileName = document.querySelector(".profile__title"); //имя в шапке
-const profileJob = document.querySelector(".profile__description"); //род деятельности в шапке
+//for profile form
+const nameInputPopup = document.querySelector(".popup__field_type_name");
+const jobInputPopup = document.querySelector(".popup__field_type_job");
+const profileJob = document.querySelector(".profile__description");
 
+//for place form
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".cards");
 const placeInputPopup = document.querySelector("#form-field-place");
 const linkInputPopup = document.querySelector("#form-field-link");
 
-const cardRemove = document.querySelector(".cards__remove");
+//for image enlarged
+const popupImageElement = document.querySelector(".popup__image");
+const cardImage = document.querySelectorAll(".cards__image");
 
 const initialCards = [
   {
@@ -123,16 +129,4 @@ closeProfileButton.addEventListener("click", () => {
 
 closeCardButton.addEventListener("click", () => {
   togglePopup(popupCard);
-});
-
-//Image enlarged
-
-const popupImage = document.querySelector(".popup_type_big-image");
-const cardImage = document.querySelectorAll(".cards__image");
-const popupImageElement = document.querySelector(".popup__image");
-
-cardImage.addEventListener("click", (event) => {
-  console.log("а че почему?");
-  popupImageElement.src = event.target.src;
-  togglePopup(popupImage);
 });
