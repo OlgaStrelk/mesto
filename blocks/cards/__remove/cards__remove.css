@@ -6,4 +6,12 @@
   width: 32px;
   top: 8px;
   right: 4px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 1s linear;
+  opacity: 1;
+}
+
+.cards__remove:hover {
+  opacity: 0.6;
 }
