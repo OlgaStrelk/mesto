@@ -70,6 +70,12 @@ const createCard = (data) => {
   cardElement.querySelector(".cards__like").addEventListener("click", (event) => {
     event.target.classList.add("cards__like_is-active");
   });
+
+  cardElement
+  .querySelector(".cards__image")
+  .addEventListener("click", (event) => {
+    togglePopup(popupImage);
+  });
   
   return cardElement;
 };
