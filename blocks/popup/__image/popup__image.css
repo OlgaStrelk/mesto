@@ -1,7 +1,6 @@
 .popup__image {
-    background: no-repeat center/75% url("../../../images/user-pic.jpeg");
-    max-height: 100%;
-    max-width: 100%;
+    max-width: 75vw;
+    max-height: 75vh;
     object-fit: cover;
     display: block;
 }
