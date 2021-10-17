@@ -27,7 +27,7 @@ const linkInputPopup = document.querySelector("#form-field-link");
 
 //for image enlarged
 const popupImageElement = document.querySelector(".popup__image");
-const cardImage = document.querySelectorAll(".cards__image");
+const popupImageCaption = document.querySelector(".popup__caption");
 
 const initialCards = [
   {
@@ -68,16 +68,22 @@ const createCard = (data) => {
     .addEventListener("click", (event) => {
       event.target.closest(".cards__item").remove();
     });
-  cardElement.querySelector(".cards__like").addEventListener("click", (event) => {
-    event.target.classList.add("cards__like_is-active");
-  });
+  cardElement
+    .querySelector(".cards__like")
+    .addEventListener("click", (event) => {
+      event.target.classList.add("cards__like_is-active");
+    });
 
   cardElement
-  .querySelector(".cards__image")
-  .addEventListener("click", (event) => {
-    togglePopup(popupImage);
-  });
-  
+    .querySelector(".cards__image")
+    .addEventListener("click", (event) => {
+      const name = event.target.closest(".cards__item");
+      popupImageElement.src = event.target.src;
+      popupImageCaption.textContent =
+        name.querySelector(".cards__title").textContent;
+      togglePopup(popupImage);
+    });
+
   return cardElement;
 };
 
@@ -139,5 +145,5 @@ closeCardButton.addEventListener("click", () => {
 });
 
 closeImgButton.addEventListener("click", () => {
-  togglePopup(popupImage)
-})
+  togglePopup(popupImage);
+});
