@@ -73,16 +73,15 @@ const createCard = (data) => {
   cardElement
     .querySelector(".cards__like")
     .addEventListener("click", (event) => {
-      event.target.classList.add("cards__like_is-active");
+      event.target.classList.toggle("cards__like_is-active");
     });
 
   cardElement
     .querySelector(".cards__image")
     .addEventListener("click", (event) => {
-      const name = event.target.closest(".cards__item");
-      popupImageElement.src = event.target.src;
-      popupImageCaption.textContent =
-        name.querySelector(".cards__title").textContent;
+      popupImageElement.src = data.link;
+      popupImageElement.alt = data.name;
+      popupImageCaption.textContent = data.name;
       togglePopup(popupImage);
     });
 
