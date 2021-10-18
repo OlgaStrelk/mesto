@@ -17,6 +17,7 @@ const formCard = document.querySelector(".popup__form_type_add-card");
 //for profile form
 const nameInputPopup = document.querySelector(".popup__field_type_name");
 const jobInputPopup = document.querySelector(".popup__field_type_job");
+const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
 
 //for place form
