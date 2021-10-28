@@ -1,4 +1,4 @@
-//buttons
+//buttons 
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
 const closeProfileButton = document.querySelector(".popup__close_type_profile");
