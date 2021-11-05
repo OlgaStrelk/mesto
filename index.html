@@ -57,6 +57,10 @@ spa<!DOCTYPE html>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="edit-form" class="popup__form popup__form_type_profile">
               <input
+              novalidate
+              required
+              minlength="2"
+              maxlength="40"
                 type="text"
                 name="name"
                 id="form-field-name"
@@ -65,6 +69,10 @@ spa<!DOCTYPE html>
               />
               <span class="form-field-name-error popup__error"></span>
               <input
+              novalidate
+              required
+              minlength="2"
+              maxlength="200"
                 type="text"
                 name="occupation"
                 id="form-field-job"
@@ -96,6 +104,10 @@ spa<!DOCTYPE html>
               class="popup__form popup__form_type_add-card"
             >
               <input
+              novalidate
+              required
+              minlength="2"
+              maxlength="30"
                 type="text"
                 name="place"
                 class="popup__field"
@@ -104,7 +116,9 @@ spa<!DOCTYPE html>
               />
               <span class="form-field-place-error popup__error"></span>
               <input
-                type="text"
+              novalidate
+              required
+                type="email"
                 name="link"
                 class="popup__field"
                 id="form-field-link"
