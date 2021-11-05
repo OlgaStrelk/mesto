@@ -1,3 +1,12 @@
+const validationConfig = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+  };
+
 const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
@@ -61,8 +70,10 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, inp
 };
 
 const enableValidation = (config) => {
-    const formList = document.querySelectorAll(config.formSelector);
+    const formList = [...document.querySelectorAll(config.formSelector)];
     formList.forEach(formElement => {
         setEventListeners(formElement, config.inputSelector, config.submitButtonSelector, config.inputErrorClass, config.errorClass, config.inactiveButtonClass);
     })
 };
+
+enableValidation(validationConfig);
