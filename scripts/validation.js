@@ -1,3 +1,29 @@
+const checkInputValidity = () => {
+
+};
+
+const toggleButtonState = () => {
+
+};
+
+const setEventListeners = (formElement) => {
+    formElement.addEventListener('submit', (event) => {
+        event.preventDefault();
+    });
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    inputList.forEach(inputElement => {inputElement.addEventListener("input", () => {
+        checkInputValidity();
+        toggleButtonState();
+    });
+});
+};
+
+const enableValidation = (config) => {
+    const formList = document.querySelectorAll(config.formSelector);
+    formList.forEach(formElement => {
+        setEventListeners(formElement);
+    })
+};
 
 enableValidation({
     formSelector: '.popup__form',
