@@ -30,6 +30,7 @@ const linkInputPopup = document.querySelector("#form-field-link");
 const popupImageElement = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__caption");
 
+
 const initialCards = [
   {
     name: "Рейкьявик",
@@ -149,3 +150,15 @@ closeImgButton.addEventListener("click", () => {
   togglePopup(popupImage);
 });
 
+const popupList=Array.from(document.querySelectorAll(".popup"))
+popupList.forEach(item => {
+  item.addEventListener("click", (evt) => {
+    togglePopup(evt.target);
+})
+});
+
+document
+  .querySelector(".popup__container")
+  .addEventListener("click", function (event) {
+    event.stopPropagation();
+  });

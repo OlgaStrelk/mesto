@@ -7,25 +7,13 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const showError = (
-  formElement,
-  inputElement,
-  errorElement,
-  inputErrorClass,
-  errorClass
-) => {
+const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(errorClass);
 };
 
-const hideError = (
-  formElement,
-  inputElement,
-  errorElement,
-  inputErrorClass,
-  errorClass
-) => {
+const hideError = (inputElement, errorElement, inputErrorClass, errorClass) => {
   inputElement.classList.remove(inputErrorClass);
   errorElement.textContent = "";
   errorElement.classList.remove(errorClass);
@@ -58,7 +46,7 @@ const checkInputValidity = (
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some(inputElement => {
+  return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
@@ -74,10 +62,10 @@ const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
 };
 
 const checkInputsContent = (inputList) => {
-    return inputList.every(inputElement => {
-        return inputElement.value.length === 0;
-    })
-}
+  return inputList.every((inputElement) => {
+    return inputElement.value.length === 0;
+  });
+};
 
 const toggleButtonState = (
   formElement,
@@ -121,6 +109,12 @@ const setEventListeners = (
       );
     });
   });
+  toggleButtonState(
+    formElement,
+    inputList,
+    submitButtonSelector,
+    inactiveButtonClass
+  );
 };
 
 const enableValidation = (config) => {
@@ -134,12 +128,6 @@ const enableValidation = (config) => {
       config.errorClass,
       config.inactiveButtonClass
     );
-    toggleButtonState(
-        formElement,
-        inputList,
-        submitButtonSelector,
-        inactiveButtonClass
-      );
   });
 };
 
