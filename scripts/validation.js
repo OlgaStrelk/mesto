@@ -38,7 +38,6 @@ const checkInputValidity = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(errorElement);
   if (!inputElement.validity.valid) {
     showError(
       formElement,
@@ -66,11 +65,19 @@ const hasInvalidInput = (inputList) => {
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
 };
 
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
   buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled", true);
 };
+
+const checkInputsContent = (inputList) => {
+    return inputList.every(inputElement => {
+        return inputElement.value.length === 0;
+    })
+}
 
 const toggleButtonState = (
   formElement,
@@ -79,7 +86,7 @@ const toggleButtonState = (
   inactiveButtonClass
 ) => {
   const buttonElement = formElement.querySelector(submitButtonSelector);
-  if (hasInvalidInput(inputList)) {
+  if (hasInvalidInput(inputList) || checkInputsContent(inputList)) {
     disableSubmitButton(buttonElement, inactiveButtonClass);
   } else {
     enableSubmitButton(buttonElement, inactiveButtonClass);
@@ -127,6 +134,12 @@ const enableValidation = (config) => {
       config.errorClass,
       config.inactiveButtonClass
     );
+    toggleButtonState(
+        formElement,
+        inputList,
+        submitButtonSelector,
+        inactiveButtonClass
+      );
   });
 };
 
