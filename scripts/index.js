@@ -86,7 +86,7 @@ const createCard = (data) => {
       popupImageElement.src = data.link;
       popupImageElement.alt = data.name;
       popupImageCaption.textContent = data.name;
-      togglePopup(popupImage);
+      openPopup(popupImage);
     });
 
   return cardElement;
@@ -100,13 +100,17 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
-function togglePopup(popupName) {
-  popupName.classList.toggle("popup_is-opened");
+function openPopup(popupName) {
+  popupName.classList.add("popup_is-opened");
+}
+
+function closePopup(popupName) {
+  popupName.classList.remove("popup_is-opened");
 }
 
 function formSubmit(event, nodeElement) {
   event.preventDefault();
-  togglePopup(nodeElement);
+  closePopup(nodeElement);
 }
 
 function formCardSubmit(event) {
@@ -127,13 +131,13 @@ function formProfileSubmit(event) {
 function openProfilePopup() {
   nameInputPopup.value = profileName.textContent;
   jobInputPopup.value = profileJob.textContent;
-  togglePopup(popupProfile);
+  openPopup(popupProfile);
 }
 
-function toggleWithESC(evt) {
+function closeWithESC(evt) {
   popupList.forEach((item) => {
     if (item.classList.contains("popup_is-opened") && evt.key === "Escape") {
-      togglePopup(item);
+      closePopup(item);
     }
   });
 }
@@ -142,7 +146,7 @@ function toggleWithESC(evt) {
 editProfileButton.addEventListener("click", openProfilePopup);
 
 addCardButton.addEventListener("click", () => {
-  togglePopup(popupCard);
+  openPopup(popupCard);
 });
 
 formProfile.addEventListener("submit", formProfileSubmit);
@@ -150,20 +154,20 @@ formProfile.addEventListener("submit", formProfileSubmit);
 formCard.addEventListener("submit", formCardSubmit);
 
 closeProfileButton.addEventListener("click", () => {
-  togglePopup(popupProfile);
+  closePopup(popupProfile);
 });
 
 closeCardButton.addEventListener("click", () => {
-  togglePopup(popupCard);
+  closePopup(popupCard);
 });
 
 closeImgButton.addEventListener("click", () => {
-  togglePopup(popupImage);
+  closePopup(popupImage);
 });
 
 popupList.forEach((item) => {
   item.addEventListener("click", (evt) => {
-    togglePopup(evt.target);
+    closePopup(evt.target);
   });
 });
 
@@ -172,5 +176,5 @@ popupWindow.addEventListener("click", function (event) {
 });
 
 document.addEventListener("keydown", (evt) => {
-  toggleWithESC(evt);
+  closeWithESC(evt);
 });
