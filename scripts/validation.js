@@ -8,7 +8,6 @@ const validationConfig = {
 };
 
 const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
-  console.log(inputErrorClass);
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(errorClass);
@@ -29,7 +28,6 @@ const checkInputValidity = (
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   if (!inputElement.validity.valid) {
     showError(
-      formElement,
       inputElement,
       errorElement,
       inputErrorClass,
@@ -37,7 +35,6 @@ const checkInputValidity = (
     );
   } else {
     hideError(
-      formElement,
       inputElement,
       errorElement,
       inputErrorClass,
