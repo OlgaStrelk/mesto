@@ -8,6 +8,7 @@ const validationConfig = {
 };
 
 const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
+  console.log(inputErrorClass);
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(errorClass);
@@ -93,7 +94,7 @@ const setEventListeners = (
     event.preventDefault();
   });
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  inputList.forEach((inputElement) => {
+  inputList.forEach(inputElement => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(
         formElement,
