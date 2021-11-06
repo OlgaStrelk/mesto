@@ -30,6 +30,9 @@ const linkInputPopup = document.querySelector("#form-field-link");
 const popupImageElement = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__caption");
 
+//popup UX
+const popupList = Array.from(document.querySelectorAll(".popup"));
+const popupWindow = document.querySelector(".popup__container");
 
 const initialCards = [
   {
@@ -127,6 +130,14 @@ function openProfilePopup() {
   togglePopup(popupProfile);
 }
 
+function toggleWithESC(evt) {
+  popupList.forEach((item) => {
+    if (item.classList.contains("popup_is-opened") && evt.key === "Escape") {
+      togglePopup(item);
+    }
+  });
+}
+
 //Handlers
 editProfileButton.addEventListener("click", openProfilePopup);
 
@@ -150,15 +161,16 @@ closeImgButton.addEventListener("click", () => {
   togglePopup(popupImage);
 });
 
-const popupList=Array.from(document.querySelectorAll(".popup"))
-popupList.forEach(item => {
+popupList.forEach((item) => {
   item.addEventListener("click", (evt) => {
     togglePopup(evt.target);
-})
+  });
 });
 
-document
-  .querySelector(".popup__container")
-  .addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
+popupWindow.addEventListener("click", function (event) {
+  event.stopPropagation();
+});
+
+document.addEventListener("keydown", (evt) => {
+  toggleWithESC(evt);
+});
