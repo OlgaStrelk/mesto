@@ -55,23 +55,35 @@
               aria-label="Закрыть"
             ></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="edit-form" class="popup__form popup__form_type_profile">
+            <form
+              name="edit-form"
+              class="popup__form popup__form_type_profile"
+              novalidate
+            >
               <input
-                required minlength=""
-                maxlength=""
+                required
+                minlength="2"
+                maxlength="40"
                 type="text"
                 autocomplete="off"
                 name="name"
+                id="form-field-name"
                 class="popup__field popup__field_type_name"
+                placeholder="Ваше имя"
               />
+              <span id="form-field-name-error" class="popup__error"></span>
               <input
-                required minlength=""
-                maxlength=""
+                required
+                minlength="2"
+                maxlength="200"
                 type="text"
                 autocomplete="off"
                 name="occupation"
+                id="form-field-job"
                 class="popup__field popup__field_type_job"
+                placeholder="Чем вы занимаетесь?"
               />
+              <span id="form-field-job-error" class="popup__error"></span>
               <button
                 type="submit"
                 class="popup__submit"
@@ -94,23 +106,28 @@
             <form
               name="edit-form"
               class="popup__form popup__form_type_add-card"
+              novalidate
             >
               <input
+                required
+                minlength="2"
+                maxlength="30"
                 type="text"
                 name="place"
                 class="popup__field"
                 id="form-field-place"
                 placeholder="Название"
               />
-              <span class="form-field-place-error popup__error"></span>
+              <span id="form-field-place-error" class="popup__error"></span>
               <input
-                type="text"
+                required
+                type="email"
                 name="link"
                 class="popup__field"
                 id="form-field-link"
                 placeholder="Ссылка на картинку"
               />
-              <span class="form-field-link-error popup__error"></span>
+              <span id="form-field-link-error" class="popup__error"></span>
               <button type="submit" class="popup__submit" aria-label="Создать">
                 Создать
               </button>
@@ -146,7 +163,7 @@
         </div>
       </div>
     </template>
-
+    <script src="scripts/validation.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/"></script>
   </body>
