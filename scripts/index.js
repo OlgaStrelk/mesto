@@ -32,7 +32,7 @@ const popupImageCaption = document.querySelector(".popup__caption");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
-const popupWindow = document.querySelector(".popup__container");
+const popupWindows = Array.from(document.querySelector(".popup__container"));
 
 const initialCards = [
   {
@@ -65,7 +65,7 @@ const createCard = (data) => {
   const cardElement = cardTemplate
     .querySelector(".cards__item")
     .cloneNode(true);
-  const cardImage = cardElement.querySelector(".cards__image")
+  const cardImage = cardElement.querySelector(".cards__image");
   cardElement.querySelector(".cards__title").textContent = data.name;
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -148,6 +148,14 @@ function closeWithESC(evt) {
   });
 }
 
+function closePopupByOverlay(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+}
+
+popupList.forEach((item) => item.addEventListener("click", item));
+
 //Handlers
 editProfileButton.addEventListener("click", openProfilePopup);
 
@@ -177,8 +185,10 @@ popupList.forEach((item) => {
   });
 });
 
-popupWindow.addEventListener("click", function (event) {
-  event.stopPropagation();
+popupWindows.forEach((item) => {
+  item.addEventListener("click", function (evt) {
+    evt.stopPropagation();
+  });
 });
 
 document.addEventListener("keydown", (evt) => {
