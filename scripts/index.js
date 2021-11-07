@@ -65,9 +65,10 @@ const createCard = (data) => {
   const cardElement = cardTemplate
     .querySelector(".cards__item")
     .cloneNode(true);
+  const cardImage = cardElement.querySelector(".cards__image")
   cardElement.querySelector(".cards__title").textContent = data.name;
-  cardElement.querySelector(".cards__image").src = data.link;
-  cardElement.querySelector(".cards__image").alt = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
 
   cardElement
     .querySelector(".cards__remove")
