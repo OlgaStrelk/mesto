@@ -101,20 +101,24 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
-function closePopupWithESC(evt, popupName) {
-  if (evt.key === "Escape") {
-    closePopup(popupName);
-  }
-}
-
 function openPopup(popupName) {
   popupName.classList.add("popup_is-opened");
-  document.addEventListener('keydown', (evt) => {closePopupWithESC(evt, popupName)});
+  document.addEventListener("keydown", (evt) => {
+    closePopupWithESC(evt, popupName);
+  });
 }
 
 function closePopup(popupName) {
   popupName.classList.remove("popup_is-opened");
-  document.removeEventListener('keydown', (evt) => {closePopupWithESC(evt, popupName)});
+  document.removeEventListener("keydown", (evt) => {
+    closePopupWithESC(evt, popupName);
+  });
+}
+
+function closePopupWithESC(evt, popupName) {
+  if (evt.key === "Escape") {
+    closePopup(popupName);
+  }
 }
 
 function submitForm(event, popupName) {
@@ -182,4 +186,3 @@ popupWindows.forEach((item) => {
     evt.stopPropagation();
   });
 });
-
