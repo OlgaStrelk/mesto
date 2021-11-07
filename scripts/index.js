@@ -101,17 +101,25 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
+function closePopupWithESC(evt, popupName) {
+  if (evt.key === "Escape") {
+    closePopup(popupName);
+  }
+}
+
 function openPopup(popupName) {
   popupName.classList.add("popup_is-opened");
+  document.addEventListener('keydown', (evt) => {closePopupWithESC(evt, popupName)});
 }
 
 function closePopup(popupName) {
   popupName.classList.remove("popup_is-opened");
+  document.removeEventListener('keydown', (evt) => {closePopupWithESC(evt, popupName)});
 }
 
-function submitForm(event, nodeElement) {
+function submitForm(event, popupName) {
   event.preventDefault();
-  closePopup(nodeElement);
+  closePopup(popupName);
 }
 
 function submitCardForm(event) {
@@ -139,22 +147,6 @@ function openCardPopup(buttonElement, inactiveButtonClass) {
   disableSubmitButton(buttonElement, inactiveButtonClass);
   openPopup(popupCard);
 }
-
-function closeWithESC(evt) {
-  popupList.forEach((item) => {
-    if (item.classList.contains("popup_is-opened") && evt.key === "Escape") {
-      closePopup(item);
-    }
-  });
-}
-
-function closePopupByOverlay(evt) {
-  if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
-  }
-}
-
-popupList.forEach((item) => item.addEventListener("click", item));
 
 //Handlers
 editProfileButton.addEventListener("click", openProfilePopup);
@@ -191,6 +183,3 @@ popupWindows.forEach((item) => {
   });
 });
 
-document.addEventListener("keydown", (evt) => {
-  closeWithESC(evt);
-});
