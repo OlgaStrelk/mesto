@@ -135,6 +135,11 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 
+function openCardPopup(buttonElement, inactiveButtonClass) {
+  disableSubmitButton(buttonElement, inactiveButtonClass);
+  openPopup(popupCard);
+}
+
 function closeWithESC(evt) {
   popupList.forEach((item) => {
     if (item.classList.contains("popup_is-opened") && evt.key === "Escape") {
