@@ -109,13 +109,13 @@ function closePopup(popupName) {
   popupName.classList.remove("popup_is-opened");
 }
 
-function formSubmit(event, nodeElement) {
+function submitForm(event, nodeElement) {
   event.preventDefault();
   closePopup(nodeElement);
 }
 
-function formCardSubmit(event) {
-  formSubmit(event, popupCard);
+function submitCardForm(event) {
+  submitForm(event, popupCard);
   renderCard({
     name: placeInputPopup.value,
     link: linkInputPopup.value,
@@ -123,10 +123,10 @@ function formCardSubmit(event) {
   event.target.reset();
 }
 
-function formProfileSubmit(event) {
+function submitProfileForm(event) {
   profileName.textContent = nameInputPopup.value;
   profileJob.textContent = jobInputPopup.value;
-  formSubmit(event, popupProfile);
+  submitForm(event, popupProfile);
 }
 
 function openProfilePopup() {
@@ -150,9 +150,9 @@ addCardButton.addEventListener("click", () => {
   openPopup(popupCard);
 });
 
-formProfile.addEventListener("submit", formProfileSubmit);
+formProfile.addEventListener("submit", submitProfileForm);
 
-formCard.addEventListener("submit", formCardSubmit);
+formCard.addEventListener("submit", submitCardForm);
 
 closeProfileButton.addEventListener("click", () => {
   closePopup(popupProfile);
