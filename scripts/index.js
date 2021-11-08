@@ -101,24 +101,21 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
+function closePopupByEsc(evt) {
+  if(evt.key === 'Escape') {
+    const openedPopup = document.querySelector('popup_is-opened');
+    closePopup(openedPopup);
+  }
+}  
+
 function openPopup(popupName) {
   popupName.classList.add("popup_is-opened");
-  document.addEventListener("keydown", (evt) => {
-    closePopupWithESC(evt, popupName);
-  });
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 function closePopup(popupName) {
   popupName.classList.remove("popup_is-opened");
-  document.removeEventListener("keydown", (evt) => {
-    closePopupWithESC(evt, popupName);
-  });
-}
-
-function closePopupWithESC(evt, popupName) {
-  if (evt.key === "Escape") {
-    closePopup(popupName);
-  }
+  document.removeEventListener("keydown", closePopupByEsc);
 }
 
 function submitForm(event, popupName) {
