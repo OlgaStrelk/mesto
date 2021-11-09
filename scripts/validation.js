@@ -1,12 +1,3 @@
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__error_visible",
-};
-
 const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
@@ -128,5 +119,3 @@ const enableValidation = (config) => {
     );
   });
 };
-
-enableValidation(validationConfig);

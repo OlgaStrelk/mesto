@@ -1,3 +1,13 @@
+//validation config
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__field",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_disabled",
+  inputErrorClass: "popup__field_type_error",
+  errorClass: "popup__error_visible",
+};
+
 //buttons
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
@@ -103,19 +113,19 @@ initialCards.forEach((card) => {
 
 function closePopupByEsc(evt) {
   if(evt.key === 'Escape') {
-    const openedPopup = document.querySelector('popup_is-opened');
+    const openedPopup = document.querySelector('.popup_is-opened');
     closePopup(openedPopup);
   }
 }  
 
 function openPopup(popupName) {
-  popupName.classList.add("popup_is-opened");
   document.addEventListener("keydown", closePopupByEsc);
+  popupName.classList.add("popup_is-opened");
 }
 
 function closePopup(popupName) {
-  popupName.classList.remove("popup_is-opened");
   document.removeEventListener("keydown", closePopupByEsc);
+  popupName.classList.remove("popup_is-opened");
 }
 
 function submitForm(event, popupName) {
@@ -144,17 +154,16 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 
-function openCardPopup(buttonElement, inactiveButtonClass) {
-  disableSubmitButton(buttonElement, inactiveButtonClass);
+function openCardPopup(validationConfig) {
+  const buttonElement = document.querySelector(".popup_type_add-card").querySelector(".popup__submit");
+  disableSubmitButton(buttonElement, validationConfig.inactiveButtonClass);
   openPopup(popupCard);
 }
 
 //Handlers
 editProfileButton.addEventListener("click", openProfilePopup);
 
-addCardButton.addEventListener("click", () => {
-  openPopup(popupCard);
-});
+addCardButton.addEventListener("click", openCardPopup);
 
 formProfile.addEventListener("submit", submitProfileForm);
 
@@ -183,3 +192,6 @@ popupWindows.forEach((item) => {
     evt.stopPropagation();
   });
 });
+
+enableValidation(validationConfig);
+
