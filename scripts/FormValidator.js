@@ -1,3 +1,8 @@
+export default class FormValidator {
+  constructor() {
+        
+  }
+}
 // const showError = (inputElement, errorElement, inputErrorClass, errorClass) => {
 //   inputElement.classList.add(inputErrorClass);
 //   errorElement.textContent = inputElement.validationMessage;
