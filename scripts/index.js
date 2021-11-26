@@ -12,17 +12,6 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-//cards config
-const cardConfig = {
-  templateSelector: "#card-template",
-  cardSelector: ".cards__item",
-  imageSelector: ".cards__image",
-  titleSelector: ".cards__title",
-  removeSelector: ".cards__remove",
-  likeSelector: ".cards__like",
-  activeLikeClass: "cards__like_is-active",
-};
-
 //buttons
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
@@ -44,6 +33,10 @@ const nameInputPopup = document.querySelector(".popup__field_type_name");
 const jobInputPopup = document.querySelector(".popup__field_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
+
+//popupImage content
+const popupImageElement = document.querySelector(".popup__image");
+const popupImageCaption = document.querySelector(".popup__caption");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
