@@ -8,8 +8,8 @@ const cardConfig = {
     likeSelector: ".cards__like",
     activeLikeClass: "cards__like_is-active",
   };
-  
-export default class Card {
+
+class Card {
   constructor(data, config) {
     this._name = data.name;
     this._link = data.link;
@@ -28,7 +28,7 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     const cardImage = this._element.querySelector(config.imageSelector);
-    this._element.querySelector(titleSelector).textContent = this._name;
+    this._element.querySelector(config.titleSelector).textContent = this._name;
     cardImage.src = this._link;
     cardImage.alt = this._name;
 
@@ -107,3 +107,5 @@ const initialCards = [
   initialCards.forEach((card) => {
     renderCard(card);
   });
+
+  export default Card;
