@@ -10,13 +10,16 @@ const cardConfig = {
   };
 
 class Card {
+//static _template = document.querySelector(templateSelector)
   constructor(data, config) {
+    console.log('Работает')
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = config.templateSelector;
   }
 
   _getTemplate() {
+    console.log('Работает')
     const cardElement = document
       .querySelector(this._templateSelector)
       .content.querySelector(config.cardSelector)
@@ -69,6 +72,15 @@ class Card {
     popupImageCaption.textContent = data.name;
     openPopup(popupImage);
   }
+
+  renderCard = (item) => {
+    //this.view = Card._template.cloneNode(true).children[0];
+    //document.querySelector(".cards").prepend(this._view);
+
+    const card = new Card(item, cardConfig);
+    const cardElement = card.generateCard();
+    document.querySelector(".cards").prepend(cardElement);
+};
 }
 
 const initialCards = [
@@ -98,11 +110,7 @@ const initialCards = [
     },
   ];
 
-  const renderCard = (item) => {
-      const card = new Card(item, cardConfig);
-      const cardElement = card.generateCard();
-      document.querySelector(".cards").prepend(cardElement);
-  };
+
 
   initialCards.forEach((card) => {
     renderCard(card);
