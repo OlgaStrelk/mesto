@@ -75,22 +75,12 @@ export class FormValidator {
         this._toggleButtonState();
       });
     });
-    this._toggleButtonState(formElement);
+    this._toggleButtonState();
   }
 
   enableValidation() {
     this._setEventListeners();
   }
 }
-
-//validation config
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__error_visible",
-};
 
 //const = new FormValidator({validationConfig})

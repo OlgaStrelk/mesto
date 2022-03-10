@@ -1,12 +1,14 @@
-// //validation config
-// const validationConfig = {
-//   formSelector: ".popup__form",
-//   inputSelector: ".popup__field",
-//   submitButtonSelector: ".popup__submit",
-//   inactiveButtonClass: "popup__submit_disabled",
-//   inputErrorClass: "popup__field_type_error",
-//   errorClass: "popup__error_visible",
-// };
+import { FormValidator } from './FormValidator.js'
+
+//validation config
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__field",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_disabled",
+  inputErrorClass: "popup__field_type_error",
+  errorClass: "popup__error_visible",
+};
 
 //buttons
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -23,13 +25,15 @@ const popupImage = document.querySelector(".popup_type_big-image");
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
+const formProfileValidator = new FormValidator(validationConfig, formProfile)
+const formCardValidator = new FormValidator(validationConfig, formCard)
 
 //for profile form
 const nameInputPopup = document.querySelector(".popup__field_type_name");
 const jobInputPopup = document.querySelector(".popup__field_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
-
+ 
 //for place form
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".cards");
@@ -42,7 +46,6 @@ const popupImageCaption = document.querySelector(".popup__caption");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
-const popupWindows = Array.from(document.querySelector(".popup__container"));
 
 const initialCards = [
   {
@@ -70,6 +73,9 @@ const initialCards = [
     link: "https://a.d-cd.net/_EAAAgGPvuA-1920.jpg",
   },
 ];
+
+formProfileValidator.enableValidation()
+formCardValidator.enableValidation()
 
 const createCard = (data) => {
   const cardElement = cardTemplate
@@ -193,5 +199,3 @@ closeCardButton.addEventListener("click", () => {
 closeImgButton.addEventListener("click", () => {
   closePopup(popupImage);
 });
-
-enableValidation(validationConfig);
