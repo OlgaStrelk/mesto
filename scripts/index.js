@@ -168,10 +168,7 @@ function openProfilePopup() {
 }
 
 function openCardPopup(validationConfig) {
-  const buttonElement = document
-    .querySelector(".popup_type_add-card")
-    .querySelector(".popup__submit");
-  disableSubmitButton(buttonElement, validationConfig.inactiveButtonClass);
+  FormValidator.disableSubmitButton();
   openPopup(popupCard);
 }
 
