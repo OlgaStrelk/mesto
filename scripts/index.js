@@ -1,12 +1,12 @@
-//validation config
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__error_visible",
-};
+// //validation config
+// const validationConfig = {
+//   formSelector: ".popup__form",
+//   inputSelector: ".popup__field",
+//   submitButtonSelector: ".popup__submit",
+//   inactiveButtonClass: "popup__submit_disabled",
+//   inputErrorClass: "popup__field_type_error",
+//   errorClass: "popup__error_visible",
+// };
 
 //buttons
 const editProfileButton = document.querySelector(".profile__edit-button");
