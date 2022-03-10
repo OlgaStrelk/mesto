@@ -37,15 +37,17 @@ export class FormValidator {
     };
 
     _showError (inputElement, errorElement) {
-      inputElement.classList.add(this._settings.inputErrorClass);
+      const {inputErrorClass, errorClass} = this._settings;
+      inputElement.classList.add(inputErrorClass);
       errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add(this._settings.errorClass);
+      errorElement.classList.add(errorClass);
     };
     
-    _hideError (inputElement, errorElement, inputErrorClass, errorClass) {
-      inputElement.classList.remove(this._settings.inputErrorClass);
+    _hideError (inputElement, errorElement) {
+      const {inputErrorClass, errorClass} = this._settings;
+      inputElement.classList.remove(inputErrorClass);
       errorElement.textContent = "";
-      errorElement.classList.remove(this._settings.errorClass);
+      errorElement.classList.remove(errorClass);
     };
 
     _checkInputValidity (inputElement) {
@@ -53,8 +55,7 @@ export class FormValidator {
       if (!inputElement.validity.valid) {
         this._showError(inputElement, errorElement);
       } else {
-        this._toggleButtonState(
-        this._hideError(inputElement, errorElement);
+        this._hideError(inputElement, errorElement)
       }
     };
     
