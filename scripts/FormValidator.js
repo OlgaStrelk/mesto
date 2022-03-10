@@ -82,5 +82,3 @@ export class FormValidator {
     this._setEventListeners();
   }
 }
-
-//const = new FormValidator({validationConfig})

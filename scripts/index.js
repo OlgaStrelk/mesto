@@ -168,7 +168,7 @@ function openProfilePopup() {
 }
 
 function openCardPopup() {
-  FormValidator.disableSubmitButton();
+  formCardValidator.disableSubmitButton();
   openPopup(popupCard);
 }
 
