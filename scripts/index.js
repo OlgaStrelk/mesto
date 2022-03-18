@@ -46,6 +46,7 @@ const popupImageCaption = document.querySelector(".popup__caption");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
+const inputList =  Array.from(formCard.querySelectorAll(".popup__field"));
 
 const initialCards = [
   {
@@ -169,6 +170,7 @@ function openProfilePopup() {
 
 function openCardPopup() {
   formCardValidator.disableSubmitButton();
+  formCardValidator.resetErrors();
   openPopup(popupCard);
 }
 
