@@ -1,3 +1,5 @@
+import { FormValidator } from './FormValidator.js'
+
 //validation config
 const validationConfig = {
   formSelector: ".popup__form",
@@ -23,13 +25,15 @@ const popupImage = document.querySelector(".popup_type_big-image");
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
+const formProfileValidator = new FormValidator(validationConfig, formProfile)
+const formCardValidator = new FormValidator(validationConfig, formCard)
 
 //for profile form
 const nameInputPopup = document.querySelector(".popup__field_type_name");
 const jobInputPopup = document.querySelector(".popup__field_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
-
+ 
 //for place form
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".cards");
@@ -42,7 +46,7 @@ const popupImageCaption = document.querySelector(".popup__caption");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
-const popupWindows = Array.from(document.querySelector(".popup__container"));
+const inputList =  Array.from(formCard.querySelectorAll(".popup__field"));
 
 const initialCards = [
   {
@@ -70,6 +74,9 @@ const initialCards = [
     link: "https://a.d-cd.net/_EAAAgGPvuA-1920.jpg",
   },
 ];
+
+formProfileValidator.enableValidation()
+formCardValidator.enableValidation()
 
 const createCard = (data) => {
   const cardElement = cardTemplate
@@ -161,11 +168,9 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 
-function openCardPopup(validationConfig) {
-  const buttonElement = document
-    .querySelector(".popup_type_add-card")
-    .querySelector(".popup__submit");
-  disableSubmitButton(buttonElement, validationConfig.inactiveButtonClass);
+function openCardPopup() {
+  formCardValidator.disableSubmitButton();
+  formCardValidator.resetErrors();
   openPopup(popupCard);
 }
 
@@ -193,5 +198,3 @@ closeCardButton.addEventListener("click", () => {
 closeImgButton.addEventListener("click", () => {
   closePopup(popupImage);
 });
-
-enableValidation(validationConfig);
