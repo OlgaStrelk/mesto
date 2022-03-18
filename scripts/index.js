@@ -78,37 +78,37 @@ const initialCards = [
 formProfileValidator.enableValidation()
 formCardValidator.enableValidation()
 
-const createCard = (data) => {
-  const cardElement = cardTemplate
-    .querySelector(".cards__item")
-    .cloneNode(true);
-  const cardImage = cardElement.querySelector(".cards__image");
-  cardElement.querySelector(".cards__title").textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
+// const createCard = (data) => {
+//   const cardElement = cardTemplate
+//     .querySelector(".cards__item")
+//     .cloneNode(true);
+//   const cardImage = cardElement.querySelector(".cards__image");
+//   cardElement.querySelector(".cards__title").textContent = data.name;
+//   cardImage.src = data.link;
+//   cardImage.alt = data.name;
 
-  cardElement
-    .querySelector(".cards__remove")
-    .addEventListener("click", (event) => {
-      event.target.closest(".cards__item").remove();
-    });
-  cardElement
-    .querySelector(".cards__like")
-    .addEventListener("click", (event) => {
-      event.target.classList.toggle("cards__like_is-active");
-    });
+//   cardElement
+//     .querySelector(".cards__remove")
+//     .addEventListener("click", (event) => {
+//       event.target.closest(".cards__item").remove();
+//     });
+//   cardElement
+//     .querySelector(".cards__like")
+//     .addEventListener("click", (event) => {
+//       event.target.classList.toggle("cards__like_is-active");
+//     });
 
-  cardElement
-    .querySelector(".cards__image")
-    .addEventListener("click", (event) => {
-      popupImageElement.src = data.link;
-      popupImageElement.alt = data.name;
-      popupImageCaption.textContent = data.name;
-      openPopup(popupImage);
-    });
+//   cardElement
+//     .querySelector(".cards__image")
+//     .addEventListener("click", (event) => {
+//       popupImageElement.src = data.link;
+//       popupImageElement.alt = data.name;
+//       popupImageCaption.textContent = data.name;
+//       openPopup(popupImage);
+//     });
 
-  return cardElement;
-};
+//   return cardElement;
+// };
 
 const renderCard = (card) => {
   cardsContainer.prepend(createCard(card));
