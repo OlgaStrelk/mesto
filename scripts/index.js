@@ -1,4 +1,7 @@
+import { closePopup, openPopup } from './utils.js';
+import { popupImage } from './consts.js'
 import { FormValidator } from './FormValidator.js'
+import { Card } from './Card.js'
 
 //validation config
 const validationConfig = {
@@ -20,7 +23,6 @@ const closeImgButton = document.querySelector(".popup__close_type_big-image");
 //popups
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupCard = document.querySelector(".popup_type_add-card");
-const popupImage = document.querySelector(".popup_type_big-image");
 
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
@@ -35,18 +37,12 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
  
 //for place form
-const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".cards");
 const placeInputPopup = document.querySelector("#form-field-place");
 const linkInputPopup = document.querySelector("#form-field-link");
 
-//for image enlarged
-const popupImageElement = document.querySelector(".popup__image");
-const popupImageCaption = document.querySelector(".popup__caption");
-
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
-const inputList =  Array.from(formCard.querySelectorAll(".popup__field"));
 
 const initialCards = [
   {
@@ -78,38 +74,6 @@ const initialCards = [
 formProfileValidator.enableValidation()
 formCardValidator.enableValidation()
 
-// const createCard = (data) => {
-//   const cardElement = cardTemplate
-//     .querySelector(".cards__item")
-//     .cloneNode(true);
-//   const cardImage = cardElement.querySelector(".cards__image");
-//   cardElement.querySelector(".cards__title").textContent = data.name;
-//   cardImage.src = data.link;
-//   cardImage.alt = data.name;
-
-//   cardElement
-//     .querySelector(".cards__remove")
-//     .addEventListener("click", (event) => {
-//       event.target.closest(".cards__item").remove();
-//     });
-//   cardElement
-//     .querySelector(".cards__like")
-//     .addEventListener("click", (event) => {
-//       event.target.classList.toggle("cards__like_is-active");
-//     });
-
-//   cardElement
-//     .querySelector(".cards__image")
-//     .addEventListener("click", (event) => {
-//       popupImageElement.src = data.link;
-//       popupImageElement.alt = data.name;
-//       popupImageCaption.textContent = data.name;
-//       openPopup(popupImage);
-//     });
-
-//   return cardElement;
-// };
-
 const renderCard = (card) => {
   cardsContainer.prepend(createCard(card));
 };
@@ -118,28 +82,11 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
-function closePopupByEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_is-opened");
-    closePopup(openedPopup);
-  }
-}
-
 function closePopupByOverlay (evt) {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector(".popup_is-opened");
     closePopup(openedPopup)
   }
-}
-
-function openPopup(popupName) {
-  document.addEventListener("keydown", closePopupByEsc);
-  popupName.classList.add("popup_is-opened");
-}
-
-function closePopup(popupName) {
-  document.removeEventListener("keydown", closePopupByEsc);
-  popupName.classList.remove("popup_is-opened");
 }
 
 function submitForm(event, popupName) {

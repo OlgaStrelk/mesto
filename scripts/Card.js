@@ -1,40 +1,51 @@
-class Card {
+import { openPopup } from './utils.js';
+import { popupImage, popupImageElement, popupImageCaption } from './consts.js'
+
+export class Card {
   constructor(data, cardTemplateSelector) {
-    //{ name,link }, '#card-template'
+    this._cardTemplate = document.querySelector(cardTemplateSelector).content;
+    this._name = data.name;
+    this._link = data.link;
   }
 
-  _createCard = (data) => {
-      //нашли
-    const cardElement = cardTemplate
-      .querySelector(".cards__item")
-      .cloneNode(true);
-    const cardImage = cardElement.querySelector(".cards__image");
-//заполнение
-    cardElement.querySelector(".cards__title").textContent = data.name;
-    cardImage.src = data.link;
-    cardImage.alt = data.name;
-//обработчики
-    cardElement
+  _setEventListeners() {
+    this._cardElement
       .querySelector(".cards__remove")
       .addEventListener("click", (event) => {
         event.target.closest(".cards__item").remove();
       });
-    cardElement
+
+    this._cardElement
       .querySelector(".cards__like")
       .addEventListener("click", (event) => {
         event.target.classList.toggle("cards__like_is-active");
       });
-    cardElement
+
+    this._cardElement
       .querySelector(".cards__image")
-      .addEventListener("click", (event) => {
-        popupImageElement.src = data.link;
-        popupImageElement.alt = data.name;
-        popupImageCaption.textContent = data.name;
+      .addEventListener("click", () => {
+        popupImageElement.src = this._link;
+        popupImageElement.alt = this._name;
+        popupImageCaption.textContent = this._name;
         openPopup(popupImage);
       });
+  }
+  //нашли
+  _findTemplate() {
+    this._cardElement = this._cardTemplate
+      .querySelector(".cards__item")
+      .cloneNode(true);
+    this._cardImage = this._cardElement.querySelector(".cards__image");
+    //заполнение
+    this._cardElement.querySelector(".cards__title").textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+
+    //обработчики
+    this._setEventListeners();
 
     return cardElement;
-  };
-
-  render = () => {};
+  }
 }
+
+// render = () => {};
