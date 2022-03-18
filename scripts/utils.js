@@ -3,7 +3,7 @@ export function closePopup(popupName) {
   popupName.classList.remove("popup_is-opened");
 }
 
-export function closePopupByEsc(evt) {
+function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_is-opened");
     closePopup(openedPopup);

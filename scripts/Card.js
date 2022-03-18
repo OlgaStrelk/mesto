@@ -1,11 +1,16 @@
-import { openPopup } from './utils.js';
-import { popupImage, popupImageElement, popupImageCaption } from './consts.js'
+import { openPopup } from "./utils.js";
+import { popupImage, popupImageElement, popupImageCaption } from "./consts.js";
 
 export class Card {
   constructor(data, cardTemplateSelector) {
     this._cardTemplate = document.querySelector(cardTemplateSelector).content;
     this._name = data.name;
     this._link = data.link;
+  }
+  _fillCard() {
+    this._cardElement.querySelector(".cards__title").textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
   }
 
   _setEventListeners() {
@@ -30,22 +35,15 @@ export class Card {
         openPopup(popupImage);
       });
   }
-  //нашли
-  _findTemplate() {
+
+  createCard() {
     this._cardElement = this._cardTemplate
       .querySelector(".cards__item")
       .cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".cards__image");
-    //заполнение
-    this._cardElement.querySelector(".cards__title").textContent = this._name;
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-
-    //обработчики
+    this._fillCard();
     this._setEventListeners();
 
-    return cardElement;
+    return this._cardElement;
   }
 }
-
-// render = () => {};
