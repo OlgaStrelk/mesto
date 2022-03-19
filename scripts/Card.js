@@ -17,6 +17,10 @@ export class Card {
     this._cardElement.remove();
     this._element = null;
   }
+
+  _likeCardHandler(event) {
+    event.target.classList.toggle("cards__like_is-active");
+  }
   _setEventListeners() {
     this._cardElement
       .querySelector(".cards__remove")
@@ -24,9 +28,7 @@ export class Card {
 
     this._cardElement
       .querySelector(".cards__like")
-      .addEventListener("click", (event) => {
-        event.target.classList.toggle("cards__like_is-active");
-      });
+      .addEventListener("click", (event) => _likeCardHandler(event));
 
     this._cardImage.addEventListener("click", () => {
       popupImageElement.src = this._link;
