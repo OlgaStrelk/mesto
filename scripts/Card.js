@@ -13,14 +13,14 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
   }
-
+  _removeCardHandler() {
+    this._cardElement.remove();
+    this._element = null;
+  }
   _setEventListeners() {
     this._cardElement
       .querySelector(".cards__remove")
-      .addEventListener("click", () => {
-        this._cardElement.remove();
-        this._element = null;
-      });
+      .addEventListener("click", () => this._removeCardHandler);
 
     this._cardElement
       .querySelector(".cards__like")
