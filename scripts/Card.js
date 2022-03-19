@@ -7,7 +7,7 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
   }
-  
+
   _fillCard() {
     this._cardElement.querySelector(".cards__title").textContent = this._name;
     this._cardImage.src = this._link;
@@ -17,8 +17,9 @@ export class Card {
   _setEventListeners() {
     this._cardElement
       .querySelector(".cards__remove")
-      .addEventListener("click", (event) => {
-        event.target.closest(".cards__item").remove();
+      .addEventListener("click", () => {
+        this._cardElement.remove();
+        this._element = null;
       });
 
     this._cardElement
@@ -27,14 +28,12 @@ export class Card {
         event.target.classList.toggle("cards__like_is-active");
       });
 
-    this._cardElement
-      .querySelector(".cards__image")
-      .addEventListener("click", () => {
-        popupImageElement.src = this._link;
-        popupImageElement.alt = this._name;
-        popupImageCaption.textContent = this._name;
-        openPopup(popupImage);
-      });
+    this._cardImage.addEventListener("click", () => {
+      popupImageElement.src = this._link;
+      popupImageElement.alt = this._name;
+      popupImageCaption.textContent = this._name;
+      openPopup(popupImage);
+    });
   }
 
   createCard() {
