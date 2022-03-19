@@ -7,6 +7,7 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
   }
+  
   _fillCard() {
     this._cardElement.querySelector(".cards__title").textContent = this._name;
     this._cardImage.src = this._link;
