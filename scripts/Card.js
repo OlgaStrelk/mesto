@@ -19,8 +19,8 @@ export class Card {
     this._cardElement = null;
   };
 
-  _likeCardHandler(event) {
-    event.target.classList.toggle("cards__like_is-active");
+  _likeCardHandler() {
+    this._cardLike.classList.toggle("cards__like_is-active");
   }
 
   _enlargeImageHandler = () => {
@@ -28,16 +28,17 @@ export class Card {
     popupImageElement.alt = this._name;
     popupImageCaption.textContent = this._name;
     openPopup(popupImage);
-  }
+  };
 
   _setEventListeners() {
+    this._cardLike = this._cardElement.querySelector(".cards__like");
     this._cardElement
       .querySelector(".cards__remove")
       .addEventListener("click", this._removeCardHandler);
 
-    this._cardElement
-      .querySelector(".cards__like")
-      .addEventListener("click", (event) => this._likeCardHandler(event));
+    this._cardLike.addEventListener("click", () =>
+      this._likeCardHandler()
+    );
 
     this._cardImage.addEventListener("click", this._enlargeImageHandler);
   }
