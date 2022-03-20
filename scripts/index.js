@@ -75,8 +75,7 @@ formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 
 const renderCard = (data) => {
-  const card = new Card(data, "#card-template");
-  cardsContainer.prepend(card.createCard());
+  cardsContainer.prepend(new Card(data, "#card-template").createCard());
 };
 
 initialCards.forEach((card) => {
