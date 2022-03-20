@@ -10,7 +10,7 @@
   background: center center no-repeat url("../../../images/add-button.svg");
   border: 2px solid white;
   opacity: 1;
-  transition: opacity 1s linear;
+  transition: opacity 0.5s linear;
   border-radius: 2px;
   cursor: pointer;
 }

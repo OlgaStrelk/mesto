@@ -8,7 +8,7 @@
   right: 4px;
   border: none;
   cursor: pointer;
-  transition: opacity 1s linear;
+  transition: opacity 0.5s linear;
   opacity: 1;
 }
 

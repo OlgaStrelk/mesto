@@ -6,7 +6,7 @@
     height: 19px;
     border: none;
     opacity: 1;
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
     cursor: pointer;
 }
 
