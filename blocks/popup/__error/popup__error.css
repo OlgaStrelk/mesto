@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
   padding-top: 5px;
-  margin-bottom: 10px;
+  display: block;
+
   color: rgba(255, 0, 0, 1);
   font-size: 12px;
   line-height: 14.52px;
-  min-height: 14.52px;
+  height: calc(14.52px * 2);
   visibility: hidden;
 }

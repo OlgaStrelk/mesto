@@ -1,7 +1,7 @@
-import { closePopup, openPopup } from './utils.js';
-import { popupImage } from './consts.js'
-import { FormValidator } from './FormValidator.js'
-import { Card } from './Card.js'
+import { closePopup, openPopup } from "./utils.js";
+import { popupImage } from "./consts.js";
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
 
 //validation config
 const validationConfig = {
@@ -14,11 +14,11 @@ const validationConfig = {
 };
 
 //buttons
-const editProfileButton = document.querySelector(".profile__edit-button");
-const addCardButton = document.querySelector(".profile__add-button");
-const closeProfileButton = document.querySelector(".popup__close_type_profile");
-const closeCardButton = document.querySelector(".popup__close_type_add-card");
-const closeImgButton = document.querySelector(".popup__close_type_big-image");
+const buttonEditProfile = document.querySelector(".profile__edit-button");
+const buttonAddCard = document.querySelector(".profile__add-button");
+const buttonCloseProfile = document.querySelector(".popup__close_type_profile");
+const buttonCloseCard = document.querySelector(".popup__close_type_add-card");
+const buttonCloseImg = document.querySelector(".popup__close_type_big-image");
 
 //popups
 const popupProfile = document.querySelector(".popup_type_profile");
@@ -27,15 +27,15 @@ const popupCard = document.querySelector(".popup_type_add-card");
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
-const formProfileValidator = new FormValidator(validationConfig, formProfile)
-const formCardValidator = new FormValidator(validationConfig, formCard)
+const formProfileValidator = new FormValidator(validationConfig, formProfile);
+const formCardValidator = new FormValidator(validationConfig, formCard);
 
 //for profile form
 const nameInputPopup = document.querySelector(".popup__field_type_name");
 const jobInputPopup = document.querySelector(".popup__field_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
- 
+
 //for place form
 const cardsContainer = document.querySelector(".cards");
 const placeInputPopup = document.querySelector("#form-field-place");
@@ -71,11 +71,11 @@ const initialCards = [
   },
 ];
 
-formProfileValidator.enableValidation()
-formCardValidator.enableValidation()
+formProfileValidator.enableValidation();
+formCardValidator.enableValidation();
 
 const renderCard = (data) => {
-  const card = new Card(data, '#card-template')
+  const card = new Card(data, "#card-template");
   cardsContainer.prepend(card.createCard());
 };
 
@@ -83,10 +83,14 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
-function closePopupByOverlay (evt) {
+initialCards.forEach((card) => {
+  renderCard(card, cardsContainer);
+});
+
+function closePopupByOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector(".popup_is-opened");
-    closePopup(openedPopup)
+    closePopup(openedPopup);
   }
 }
 
@@ -128,26 +132,26 @@ function openCardPopup() {
 }
 
 //Handlers
-editProfileButton.addEventListener("click", openProfilePopup);
+buttonEditProfile.addEventListener("click", openProfilePopup);
 
-addCardButton.addEventListener("click", openCardPopup);
+buttonAddCard.addEventListener("click", openCardPopup);
 
 formProfile.addEventListener("submit", submitProfileForm);
 
 formCard.addEventListener("submit", submitCardForm);
 
 popupList.forEach((item) => {
-  item.addEventListener("click", closePopupByOverlay)
+  item.addEventListener("click", closePopupByOverlay);
 });
 
-closeProfileButton.addEventListener("click", () => {
+buttonCloseProfile.addEventListener("click", () => {
   closePopup(popupProfile);
 });
 
-closeCardButton.addEventListener("click", () => {
+buttonCloseCard.addEventListener("click", () => {
   closePopup(popupCard);
 });
 
-closeImgButton.addEventListener("click", () => {
+buttonCloseImg.addEventListener("click", () => {
   closePopup(popupImage);
 });
