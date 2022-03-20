@@ -1,6 +1,7 @@
 .cards__image {
   margin: 0;
   padding: 0;
+  display: block;
   width: 282px;
   height: 282px;
   z-index: 0;
