@@ -83,10 +83,6 @@ initialCards.forEach((card) => {
   renderCard(card);
 });
 
-initialCards.forEach((card) => {
-  renderCard(card, cardsContainer);
-});
-
 function closePopupByOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector(".popup_is-opened");
