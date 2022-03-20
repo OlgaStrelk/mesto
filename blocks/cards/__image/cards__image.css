@@ -1,7 +1,13 @@
 .cards__image {
-    margin: 0;
-    padding: 0;
-    width: 282px;
-    height: 282px;
-    z-index: 0;
+  margin: 0;
+  padding: 0;
+  width: 282px;
+  height: 282px;
+  z-index: 0;
+  transition: opacity 0.5s linear;
+  cursor: pointer;
+}
+
+.cards__image:hover {
+  opacity: 0.9;
 }
