@@ -13,29 +13,33 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
   }
-  _removeCardHandler() {
+
+  _removeCardHandler = () => {
     this._cardElement.remove();
-    this._element = null;
-  }
+    this._cardElement = null;
+  };
 
   _likeCardHandler(event) {
     event.target.classList.toggle("cards__like_is-active");
   }
+
+  _enlargeImageHandler = () => {
+    popupImageElement.src = this._link;
+    popupImageElement.alt = this._name;
+    popupImageCaption.textContent = this._name;
+    openPopup(popupImage);
+  }
+
   _setEventListeners() {
     this._cardElement
       .querySelector(".cards__remove")
-      .addEventListener("click", () => this._removeCardHandler);
+      .addEventListener("click", this._removeCardHandler);
 
     this._cardElement
       .querySelector(".cards__like")
-      .addEventListener("click", (event) => _likeCardHandler(event));
+      .addEventListener("click", (event) => this._likeCardHandler(event));
 
-    this._cardImage.addEventListener("click", () => {
-      popupImageElement.src = this._link;
-      popupImageElement.alt = this._name;
-      popupImageCaption.textContent = this._name;
-      openPopup(popupImage);
-    });
+    this._cardImage.addEventListener("click", this._enlargeImageHandler);
   }
 
   createCard() {
