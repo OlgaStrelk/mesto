@@ -116,9 +116,14 @@ function openProfilePopup() {
   openPopup(popupProfile);
 }
 
+function clearForm() {
+  formCard.reset();
+}
+
 function openCardPopup() {
   formCardValidator.disableSubmitButton();
   formCardValidator.resetErrors();
+  clearForm();
   openPopup(popupCard);
 }
 
