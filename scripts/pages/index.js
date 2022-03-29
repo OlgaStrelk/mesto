@@ -2,6 +2,8 @@ import { closePopup, openPopup } from "./utils.js";
 import { popupImage } from "./consts.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
+import { Section } from "./Section.js";
+
 
 //validation config
 const validationConfig = {
@@ -16,9 +18,9 @@ const validationConfig = {
 //buttons
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const buttonAddCard = document.querySelector(".profile__add-button");
-const buttonCloseProfile = document.querySelector(".popup__close_type_profile");
-const buttonCloseCard = document.querySelector(".popup__close_type_add-card");
-const buttonCloseImg = document.querySelector(".popup__close_type_big-image");
+// const buttonCloseProfile = document.querySelector(".popup__close_type_profile");
+// const buttonCloseCard = document.querySelector(".popup__close_type_add-card");
+// const buttonCloseImg = document.querySelector(".popup__close_type_big-image");
 
 //popups
 const popupProfile = document.querySelector(".popup_type_profile");
@@ -31,15 +33,15 @@ const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
 
 //for profile form
-const nameInputPopup = document.querySelector(".popup__field_type_name");
-const jobInputPopup = document.querySelector(".popup__field_type_job");
+const nameInput = document.querySelector(".popup__field_type_name");
+const jobInput = document.querySelector(".popup__field_type_job");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
 
 //for place form
 const cardsContainer = document.querySelector(".cards");
-const placeInputPopup = document.querySelector("#form-field-place");
-const linkInputPopup = document.querySelector("#form-field-link");
+const placeInput = document.querySelector("#form-field-place");
+const linkInput = document.querySelector("#form-field-link");
 
 //popup UX
 const popupList = Array.from(document.querySelectorAll(".popup"));
@@ -97,21 +99,21 @@ function submitForm(event, popupName) {
 function submitCardForm(event) {
   submitForm(event, popupCard);
   renderCard({
-    name: placeInputPopup.value,
-    link: linkInputPopup.value,
+    name: placeInput.value,
+    link: linkInput.value,
   });
   event.target.reset();
 }
 
 function submitProfileForm(event) {
-  profileName.textContent = nameInputPopup.value;
-  profileJob.textContent = jobInputPopup.value;
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
   submitForm(event, popupProfile);
 }
 
 function openProfilePopup() {
-  nameInputPopup.value = profileName.textContent;
-  jobInputPopup.value = profileJob.textContent;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
   openPopup(popupProfile);
 }
 
@@ -139,14 +141,14 @@ popupList.forEach((item) => {
   item.addEventListener("click", closePopupByOverlay);
 });
 
-buttonCloseProfile.addEventListener("click", () => {
-  closePopup(popupProfile);
-});
+// buttonCloseProfile.addEventListener("click", () => {
+//   closePopup(popupProfile);
+// });
 
-buttonCloseCard.addEventListener("click", () => {
-  closePopup(popupCard);
-});
+// buttonCloseCard.addEventListener("click", () => {
+//   closePopup(popupCard);
+// });
 
-buttonCloseImg.addEventListener("click", () => {
-  closePopup(popupImage);
-});
+// buttonCloseImg.addEventListener("click", () => {
+//   closePopup(popupImage);
+// });
