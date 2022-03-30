@@ -28,7 +28,6 @@ const popupCard = document.querySelector(".popup_type_add-card");
 
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
-console.log(document)
 const formCard = document.querySelector(".popup__form_type_add-card");
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
@@ -41,6 +40,7 @@ const profileJob = document.querySelector(".profile__description");
 
 //for place form
 const cardsContainer = document.querySelector(".cards");
+console.log(cardsContainer)
 const placeInput = document.querySelector("#form-field-place");
 const linkInput = document.querySelector("#form-field-link");
 

@@ -10,7 +10,6 @@ export class Section {
 
   renderElements() {
     this._items.forEach((data) => {
-      // {name, link}
       this._renderer(data);
     });
   }
