@@ -1,4 +1,3 @@
-import { closePopupByEsc } from "../utils/utils.js";
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
@@ -20,7 +19,7 @@ export class Popup {
     this._popup.classList.remove("popup_is-opened");
   }
 
-  _setEventListeners() {
+  setEventListeners() {
     const closeButton = this._popup.querySelector(".popup__close");
 
     this._popup._setEventListeners("click", (evt) => {

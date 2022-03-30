@@ -3,6 +3,7 @@ import { popupImage } from "../utils/consts.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { Section } from "../components/Section.js";
+import { PopupWithImage } from '../components/PopupWithImage.js'
 
 
 //validation config
@@ -40,7 +41,6 @@ const profileJob = document.querySelector(".profile__description");
 
 //for place form
 const cardsContainer = document.querySelector(".cards");
-console.log(cardsContainer)
 const placeInput = document.querySelector("#form-field-place");
 const linkInput = document.querySelector("#form-field-link");
 
@@ -90,27 +90,9 @@ const renderCard = (data) => {
 const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
 section.renderElements()
 
-
-function closePopupByOverlay(evt) {
-  if (evt.target === evt.currentTarget) {
-    const openedPopup = document.querySelector(".popup_is-opened");
-    closePopup(openedPopup);
-  }
-}
-
 function submitForm(event, popupName) {
   event.preventDefault();
   closePopup(popupName);
-}
-
-function submitCardForm(event) {
-  submitForm(event, popupCard);
-  const card = createCard({
-    name: placeInput.value,
-    link: linkInput.value,
-  });
-  section.addItem(card)
-  event.target.reset();
 }
 
 function submitProfileForm(event) {
@@ -136,6 +118,16 @@ function openCardPopup() {
   openPopup(popupCard);
 }
 
+function submitCardForm(event) {
+  submitForm(event, popupCard);
+  const card = createCard({
+    name: placeInput.value,
+    link: linkInput.value,
+  });
+  section.addItem(card)
+  event.target.reset();
+}
+
 //Handlers
 buttonEditProfile.addEventListener("click", openProfilePopup);
 
@@ -149,14 +141,5 @@ popupList.forEach((item) => {
   item.addEventListener("click", closePopupByOverlay);
 });
 
-// buttonCloseProfile.addEventListener("click", () => {
-//   closePopup(popupProfile);
-// });
-
-// buttonCloseCard.addEventListener("click", () => {
-//   closePopup(popupCard);
-// });
-
-// buttonCloseImg.addEventListener("click", () => {
-//   closePopup(popupImage);
-// });
+const imagePopup = new PopupWithImage(popupCard)
+imagePopup.setEventListeners()

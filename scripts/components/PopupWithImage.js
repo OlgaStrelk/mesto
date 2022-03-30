@@ -1,6 +1,11 @@
+import { Popup } from "./Popup.js";
 export class PopupWithImage extends Popup {
-    open(url) {
-      this.popup.querySelector(".popup__image").setAttribute(`src`, url);
-      super.open();
-      }
+  open(url, text) {
+    const image = this._popup.querySelector(".popup__image");
+    const caption = this._popup.querySelector(".popup__caption");
+
+    image.src = url
+    caption.textContent = text
+    super.open();
+  }
 }
