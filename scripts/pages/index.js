@@ -1,4 +1,4 @@
-import { closePopup, openPopup } from "../utils/utils.js";
+import { openPopup } from "../utils/utils.js";
 import { popupImage } from "../utils/consts.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
@@ -44,9 +44,6 @@ const profileJob = document.querySelector(".profile__description");
 const cardsContainer = document.querySelector(".cards");
 const placeInput = document.querySelector("#form-field-place");
 const linkInput = document.querySelector("#form-field-link");
-
-//popup UX
-const popupList = Array.from(document.querySelectorAll(".popup"));
 
 const initialCards = [
   {
@@ -100,10 +97,10 @@ imagePopup.setEventListeners()
 cardPopup.setEventListeners()
 profilePopup.setEventListeners()
 
-function submitForm(event, popupName) {
-  event.preventDefault();
-  closePopup(popupName);
-}
+// function submitForm(event, popupName) {
+//   event.preventDefault();
+//   closePopup(popupName);
+// }
 
 function submitProfileForm(event) {
   profileName.textContent = nameInput.value;
@@ -114,7 +111,7 @@ function submitProfileForm(event) {
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(popupProfile);
+  profilePopup.open();
 }
 
 function clearForm() {
@@ -125,7 +122,7 @@ function openCardPopup() {
   formCardValidator.disableSubmitButton();
   formCardValidator.resetErrors();
   clearForm();
-  openPopup(popupCard);
+  cardPopup.open();
 }
 
 function submitCardForm(event) {
@@ -142,20 +139,3 @@ function submitCardForm(event) {
 buttonEditProfile.addEventListener("click", openProfilePopup);
 
 buttonAddCard.addEventListener("click", openCardPopup);
-
-formProfile.addEventListener("submit", submitProfileForm);
-
-formCard.addEventListener("submit", submitCardForm);
-
-popupList.forEach((item) => {
-  item.addEventListener("click", closePopupByOverlay);
-});
-
-
-
-// _enlargeImageHandler = () => {
-//   popupImageElement.src = this._link;
-//   popupImageElement.alt = this._name;
-//   popupImageCaption.textContent = this._name;
-//   openPopup(popupImage);
-// };
