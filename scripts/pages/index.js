@@ -4,6 +4,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from '../components/PopupWithImage.js'
+import { PopupWithForm } from "../components/PopupWithForm.js";
 
 
 //validation config
@@ -91,6 +92,13 @@ const renderCard = (data) => {
 
 const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
 section.renderElements()
+const imagePopup = new PopupWithImage(popupImage)
+const cardPopup = new PopupWithForm(popupCard)
+const profilePopup = new PopupWithForm(popupProfile)
+
+imagePopup.setEventListeners()
+cardPopup.setEventListeners()
+profilePopup.setEventListeners()
 
 function submitForm(event, popupName) {
   event.preventDefault();
@@ -143,8 +151,7 @@ popupList.forEach((item) => {
   item.addEventListener("click", closePopupByOverlay);
 });
 
-const imagePopup = new PopupWithImage(popupCard)
-imagePopup.setEventListeners()
+
 
 // _enlargeImageHandler = () => {
 //   popupImageElement.src = this._link;
