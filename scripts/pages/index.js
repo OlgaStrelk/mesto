@@ -87,14 +87,12 @@ const renderCard = (data) => {
   cardsContainer.prepend(card);
 };
 
-function submitProfileForm(event) {
-  event.preventDefault()
+function submitProfileForm() {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   profilePopup.close()}
 
-function submitCardForm(event) {
-  event.preventDefault()
+function submitCardForm() {
   const card = createCard({
     name: placeInput.value,
     link: linkInput.value,
