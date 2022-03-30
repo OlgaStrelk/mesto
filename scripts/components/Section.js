@@ -4,7 +4,7 @@
 export class Section {
   constructor({ items, renderer }, containerSelector) {
     this._initialArray = items;
-    this._container = document.querySelector(containerSelector);
+    this._container = containerSelector;
     this._renderer = renderer;
   }
 

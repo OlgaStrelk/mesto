@@ -87,12 +87,8 @@ const renderCard = (data) => {
   cardsContainer.prepend(card);
 };
 
-// initialCards.forEach((card) => {
-//   renderCard(card);
-// });
-
 const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
-section.renderItems()
+section.renderElements()
 
 
 function closePopupByOverlay(evt) {
@@ -109,11 +105,11 @@ function submitForm(event, popupName) {
 
 function submitCardForm(event) {
   submitForm(event, popupCard);
-  renderCard({
+  const card = createCard({
     name: placeInput.value,
     link: linkInput.value,
   });
-  section.addItem()
+  section.addItem(card)
   event.target.reset();
 }
 
