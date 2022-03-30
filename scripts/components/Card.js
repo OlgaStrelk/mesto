@@ -42,7 +42,7 @@ export class Card {
     this._cardImage.addEventListener("click", this._enlargeImageHandler);
   }
 
-  createCard() {
+  getView() {
     this._cardElement = this._cardTemplate
       .querySelector(".cards__item")
       .cloneNode(true);

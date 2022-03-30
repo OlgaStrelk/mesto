@@ -28,6 +28,7 @@ const popupCard = document.querySelector(".popup_type_add-card");
 
 //forms
 const formProfile = document.querySelector(".popup__form_type_profile");
+console.log(document)
 const formCard = document.querySelector(".popup__form_type_add-card");
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
@@ -76,8 +77,14 @@ const initialCards = [
 formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 
+const createCard = (data) => {
+  const card = new Card(data, "#card-template")
+  return card.getView()
+}
+
 const renderCard = (data) => {
-  return cardsContainer.prepend(new Card(data, "#card-template").createCard());
+  const card = createCard(data)
+  cardsContainer.prepend(card);
 };
 
 // initialCards.forEach((card) => {
@@ -106,6 +113,7 @@ function submitCardForm(event) {
     name: placeInput.value,
     link: linkInput.value,
   });
+  section.addItem()
   event.target.reset();
 }
 

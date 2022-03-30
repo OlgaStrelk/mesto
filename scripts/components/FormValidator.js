@@ -1,5 +1,7 @@
 export class FormValidator {
   constructor(settings, form) {
+    console.log(settings)
+    console.log(this._form)
     this._form = form;
     this._settings = settings;
     this._buttonElement = this._form.querySelector(
@@ -8,8 +10,6 @@ export class FormValidator {
     this._inputList = Array.from(
       this._form.querySelectorAll(this._settings.inputSelector)
     );
-
-    //то что кладете в this и стрелочные функции  записываются в свойства объекта, а остальное в прототип(то есть глубже по цепочке)
   }
 
   _enableSubmitButton() {
