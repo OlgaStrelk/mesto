@@ -1,8 +1,8 @@
-import { closePopup, openPopup } from "./utils.js";
-import { popupImage } from "./consts.js";
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { Section } from "./Section.js";
+import { closePopup, openPopup } from "../utils/utils.js";
+import { popupImage } from "../utils/consts.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { Section } from "../components/Section.js";
 
 
 //validation config
@@ -80,9 +80,13 @@ const renderCard = (data) => {
   return cardsContainer.prepend(new Card(data, "#card-template").createCard());
 };
 
-initialCards.forEach((card) => {
-  renderCard(card);
-});
+// initialCards.forEach((card) => {
+//   renderCard(card);
+// });
+
+const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
+section.renderItems()
+
 
 function closePopupByOverlay(evt) {
   if (evt.target === evt.currentTarget) {
