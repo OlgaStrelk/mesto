@@ -1,5 +1,14 @@
 export class UserInfo{
-    constructor() {
-        
+    constructor( { profileNameSelector, profileJobSelector } ) {
+        this._name = profileNameSelector;
+        this._job = profileJobSelector;
+    }
+
+    getUserInfo() {
+
+    }
+
+    setUserInfo() {
+
     }
 }
