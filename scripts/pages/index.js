@@ -100,7 +100,6 @@ function submitCardForm(event) {
     link: linkInput.value,
   });
   section.addItem(card)
-  event.target.reset();
   cardPopup.close();
 }
 
