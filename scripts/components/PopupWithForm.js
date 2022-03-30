@@ -9,9 +9,9 @@ export class PopupWithForm extends Popup {
     //собирает данные всех полей формы
   }
 
-  _setEventListeners() {
+  setEventListeners() {
     // добавлять обработчик сабмита формы.
-    super._setEventListeners();
+    super.setEventListeners();
     this._form.addEventListener("submit", this._submitHandler)
   }
 

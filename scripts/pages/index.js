@@ -90,8 +90,8 @@ const renderCard = (data) => {
 const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
 section.renderElements()
 const imagePopup = new PopupWithImage(popupImage)
-const cardPopup = new PopupWithForm(popupCard)
-const profilePopup = new PopupWithForm(popupProfile)
+const cardPopup = new PopupWithForm(popupCard, () => {console.log('card')})
+const profilePopup = new PopupWithForm(popupProfile, () => {console.log('profile')})
 
 imagePopup.setEventListeners()
 cardPopup.setEventListeners()

@@ -25,7 +25,7 @@ export class Popup {
 
     this._popup.addEventListener("click", (evt) => {
       if (
-        !evt.target.closest(".popup__content") ||
+        !evt.target.closest(".popup__container") ||
         evt.target === closeButton
       ) {
         this.close();
