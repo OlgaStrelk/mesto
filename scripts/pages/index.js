@@ -87,15 +87,17 @@ const renderCard = (data) => {
   cardsContainer.prepend(card);
 };
 
-function submitProfileForm() {
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  profilePopup.close()}
+const submitProfileForm = (data) => {
+  const { name, occupation } = data
+  profileName.textContent = name;
+  profileJob.textContent = occupation;
+  profilePopup.close()
+}
 
-function submitCardForm() {
+const submitCardForm = (data) => {
   const card = createCard({
-    name: placeInput.value,
-    link: linkInput.value,
+    link: data.link,
+    name: data['place']
   });
   section.addItem(card)
   cardPopup.close();

@@ -1,9 +1,7 @@
 export class FormValidator {
   constructor(settings, form) {
-    console.log(settings)
     this._form = form;
     this._settings = settings;
-    console.log(this._form)
 
     this._buttonElement = this._form.querySelector(
       this._settings.submitButtonSelector
