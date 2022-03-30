@@ -1,12 +1,17 @@
 //Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
 import { openPopup } from "../utils/utils.js";
-import { popupImage, popupImageElement, popupImageCaption } from "../utils/consts.js";
+import {
+  popupImage,
+  popupImageElement,
+  popupImageCaption,
+} from "../utils/consts.js";
 
 export class Card {
   constructor(data, cardTemplateSelector, handleCardClick) {
     this._cardTemplate = document.querySelector(cardTemplateSelector).content;
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
   }
 
   _fillCard() {
@@ -22,13 +27,6 @@ export class Card {
 
   _likeCardHandler = () => {
     this._cardLike.classList.toggle("cards__like_is-active");
-  }
-
-  _enlargeImageHandler = () => {
-    popupImageElement.src = this._link;
-    popupImageElement.alt = this._name;
-    popupImageCaption.textContent = this._name;
-    openPopup(popupImage);
   };
 
   _setEventListeners() {
@@ -39,7 +37,7 @@ export class Card {
 
     this._cardLike.addEventListener("click", () => this._likeCardHandler());
 
-    this._cardImage.addEventListener("click", this._enlargeImageHandler);
+    this._cardImage.addEventListener("click", this._handleCardClick);
   }
 
   getView() {

@@ -78,7 +78,9 @@ formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 
 const createCard = (data) => {
-  const card = new Card(data, "#card-template")
+  const card = new Card(data, "#card-template", () => {
+    imagePopup.open(data.link, data.name)
+  })
   return card.getView()
 }
 
@@ -143,3 +145,10 @@ popupList.forEach((item) => {
 
 const imagePopup = new PopupWithImage(popupCard)
 imagePopup.setEventListeners()
+
+// _enlargeImageHandler = () => {
+//   popupImageElement.src = this._link;
+//   popupImageElement.alt = this._name;
+//   popupImageCaption.textContent = this._name;
+//   openPopup(popupImage);
+// };
