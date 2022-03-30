@@ -87,11 +87,29 @@ const renderCard = (data) => {
   cardsContainer.prepend(card);
 };
 
+function submitProfileForm(event) {
+  event.preventDefault()
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  profilePopup.close()}
+
+function submitCardForm(event) {
+  event.preventDefault()
+  const card = createCard({
+    name: placeInput.value,
+    link: linkInput.value,
+  });
+  section.addItem(card)
+  event.target.reset();
+  cardPopup.close();
+}
+
+
 const section = new Section({ items: initialCards, renderer: renderCard }, cardsContainer);
 section.renderElements()
 const imagePopup = new PopupWithImage(popupImage)
-const cardPopup = new PopupWithForm(popupCard, () => {console.log('card')})
-const profilePopup = new PopupWithForm(popupProfile, () => {console.log('profile')})
+const cardPopup = new PopupWithForm(popupCard, submitCardForm)
+const profilePopup = new PopupWithForm(popupProfile, submitProfileForm)
 
 imagePopup.setEventListeners()
 cardPopup.setEventListeners()
@@ -102,11 +120,7 @@ profilePopup.setEventListeners()
 //   closePopup(popupName);
 // }
 
-function submitProfileForm(event) {
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  submitForm(event, popupProfile);
-}
+
 
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
@@ -125,15 +139,7 @@ function openCardPopup() {
   cardPopup.open();
 }
 
-function submitCardForm(event) {
-  submitForm(event, popupCard);
-  const card = createCard({
-    name: placeInput.value,
-    link: linkInput.value,
-  });
-  section.addItem(card)
-  event.target.reset();
-}
+
 
 //Handlers
 buttonEditProfile.addEventListener("click", openProfilePopup);
