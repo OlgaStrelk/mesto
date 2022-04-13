@@ -10,18 +10,15 @@
 
     <title>Mesto</title>
 
-    <link rel="stylesheet" href="./pages/index.css" />
+<!--    <link rel="stylesheet" href="./pages/index.css" />-->
   </head>
-
   <body>
     <div class="page">
       <div class="page__container">
         <header class="header">
-          <img
-            class="header__logo"
-            src="./images/header__logo.svg"
-            alt="Логотип Mesto Russia"
-          />
+          <img class="header__logo"
+          src="<%=require('./images/header__logo.svg')%>" alt="Логотип Mesto
+          Russia" />
         </header>
 
         <main class="content">
@@ -40,7 +37,7 @@
 
             <img
               class="profile__user-pic"
-              src="./images/user-pic.jpeg"
+              src="<%=require('./images/user-pic.jpeg')%>"
               alt="Детская фотография снятая Микеланджело Антониони"
             />
 
@@ -192,6 +189,6 @@
       </div>
     </template>
 
-    <script type="module" src="scripts/pages/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

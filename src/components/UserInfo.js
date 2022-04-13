@@ -1,9 +1,7 @@
 export class UserInfo{
     constructor( { profileNameSelector, profileJobSelector } ) {
-        this._nameElement = profileNameSelector;
-        this._jobElement = profileJobSelector;
-        console.log(profileNameSelector)
-        console.log(profileJobSelector)
+        this._nameElement = document.querySelector(profileNameSelector);
+        this._jobElement = document.querySelector(profileJobSelector);
     }
 
     getUserInfo() {

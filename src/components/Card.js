@@ -1,11 +1,3 @@
-//Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
-import { openPopup } from "../utils/utils.js";
-import {
-  popupImage,
-  popupImageElement,
-  popupImageCaption,
-} from "../utils/consts.js";
-
 export class Card {
   constructor(data, cardTemplateSelector, handleCardClick) {
     this._cardTemplate = document.querySelector(cardTemplateSelector).content;

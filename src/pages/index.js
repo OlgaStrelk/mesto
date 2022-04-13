@@ -1,5 +1,4 @@
-import { openPopup } from "../utils/utils.js";
-import { popupImage } from "../utils/consts.js";
+import './index.css';
 import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
 import { Section } from "../components/Section.js";
@@ -7,7 +6,6 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-//validation config
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__field",
@@ -17,33 +15,23 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-//buttons
+const popupImage = document.querySelector(".popup_type_big-image"); 
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const buttonAddCard = document.querySelector(".profile__add-button");
-// const buttonCloseProfile = document.querySelector(".popup__close_type_profile");
-// const buttonCloseCard = document.querySelector(".popup__close_type_add-card");
-// const buttonCloseImg = document.querySelector(".popup__close_type_big-image");
-
-//popups
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupCard = document.querySelector(".popup_type_add-card");
-
-//forms
 const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
-const formProfileValidator = new FormValidator(validationConfig, formProfile);
-const formCardValidator = new FormValidator(validationConfig, formCard);
-
-//for profile form
 const nameInput = document.querySelector(".popup__field_type_name");
 const jobInput = document.querySelector(".popup__field_type_job");
-const profileName = document.querySelector(".profile__title");
-const profileJob = document.querySelector(".profile__description");
-
-//for place form
 const cardsContainer = document.querySelector(".cards");
-const placeInput = document.querySelector("#form-field-place");
-const linkInput = document.querySelector("#form-field-link");
+const formProfileValidator = new FormValidator(validationConfig, formProfile);
+const formCardValidator = new FormValidator(validationConfig, formCard);
+const imagePopup = new PopupWithImage(popupImage);
+const userInfo = new UserInfo({
+  profileNameSelector: ".profile__title",
+  profileJobSelector: ".profile__description",
+});
 
 const initialCards = [
   {
@@ -102,18 +90,14 @@ const submitCardForm = (data) => {
   cardPopup.close();
 };
 
+const cardPopup = new PopupWithForm(popupCard, submitCardForm);
+const profilePopup = new PopupWithForm(popupProfile, submitProfileForm);
 const section = new Section(
   { items: initialCards, renderer: renderCard },
   cardsContainer
 );
 section.renderElements();
-const imagePopup = new PopupWithImage(popupImage);
-const cardPopup = new PopupWithForm(popupCard, submitCardForm);
-const profilePopup = new PopupWithForm(popupProfile, submitProfileForm);
-const userInfo = new UserInfo({
-  profileNameSelector: ".profile__title",
-  profileJobSelector: ".profile__description",
-});
+
 imagePopup.setEventListeners();
 cardPopup.setEventListeners();
 profilePopup.setEventListeners();
@@ -136,7 +120,6 @@ function openCardPopup() {
   cardPopup.open();
 }
 
-//Handlers
 buttonEditProfile.addEventListener("click", openProfilePopup);
 
 buttonAddCard.addEventListener("click", openCardPopup);
