@@ -3,6 +3,7 @@
     height: 33px;
     width: 142px;
     padding-bottom: 41px;
+    background: center center no-repeat url('../../../images/headerLogo.svg');
 }
 
 @media screen and (max-width: 596px) {

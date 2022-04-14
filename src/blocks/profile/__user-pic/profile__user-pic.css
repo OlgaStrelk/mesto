@@ -1,7 +1,8 @@
 .profile__user-pic {
   width: 120px;
   height: 120px;
-  object-fit: cover;
+  background: center center no-repeat url('../../../images/userPic.jpeg');
+  background-size: cover;
   border-radius: 60px;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -13,6 +14,6 @@
   .profile__user-pic {
     grid-row: 1;
     justify-self: center;
-    padding-bottom: 12px;
+    margin-bottom: 12px;
   }
 }
