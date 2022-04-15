@@ -28,7 +28,7 @@ const createCard = (data) => {
 
 const renderCard = (data) => {
   const card = createCard(data);
-  cardsContainer.prepend(card);
+  section.addItem(card);
 };
 
 const submitProfileForm = (data) => {
