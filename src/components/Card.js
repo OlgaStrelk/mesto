@@ -12,7 +12,7 @@ export class Card {
     this._cardImage.alt = this._name;
   }
 
-  _removeCardHandler = () => {
+  _handleCardremove = () => {
     this._cardElement.remove();
     this._cardElement = null;
   };
@@ -25,7 +25,7 @@ export class Card {
     this._cardLike = this._cardElement.querySelector(".cards__like");
     this._cardElement
       .querySelector(".cards__remove")
-      .addEventListener("click", this._removeCardHandler);
+      .addEventListener("click", this._handleCardremove);
 
     this._cardLike.addEventListener("click", () => this._likeCardHandler());
 
