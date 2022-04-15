@@ -3,6 +3,7 @@ export class Card {
     this._cardTemplate = document.querySelector(cardTemplateSelector).content;
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
     this._handleCardClick = handleCardClick;
   }
 
@@ -12,12 +13,12 @@ export class Card {
     this._cardImage.alt = this._name;
   }
 
-  _removeCardHandler = () => {
+  _handleCardremove = () => {
     this._cardElement.remove();
     this._cardElement = null;
   };
 
-  _likeCardHandler = () => {
+  _handleCardLike = () => {
     this._cardLike.classList.toggle("cards__like_is-active");
   };
 
@@ -25,11 +26,17 @@ export class Card {
     this._cardLike = this._cardElement.querySelector(".cards__like");
     this._cardElement
       .querySelector(".cards__remove")
-      .addEventListener("click", this._removeCardHandler);
+      .addEventListener("click", this._handleCardremove);
 
-    this._cardLike.addEventListener("click", () => this._likeCardHandler());
+    this._cardLike.addEventListener("click", () => this._handleCardLike());
 
     this._cardImage.addEventListener("click", this._handleCardClick);
+  }
+
+  _countLikes() {
+    const likeCountElement =
+      this._cardElement.querySelector(".cards__like-count");
+    likeCountElement.textContent = this._likes.length;
   }
 
   getView() {
@@ -40,6 +47,9 @@ export class Card {
     this._fillCard();
     this._setEventListeners();
 
+    this._countLikes();
+
     return this._cardElement;
   }
 }
+
