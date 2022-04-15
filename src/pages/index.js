@@ -65,14 +65,9 @@ function openProfilePopup() {
   profilePopup.open();
 }
 
-function clearForm() {
-  formCard.reset();
-}
-
 function openCardPopup() {
   formCardValidator.disableSubmitButton();
   formCardValidator.resetErrors();
-  clearForm();
   cardPopup.open();
 }
 
