@@ -15,11 +15,8 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const popupImage = document.querySelector(".popup_type_big-image"); 
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const buttonAddCard = document.querySelector(".profile__add-button");
-const popupProfile = document.querySelector(".popup_type_profile");
-const popupCard = document.querySelector(".popup_type_add-card");
 const formProfile = document.querySelector(".popup__form_type_profile");
 const formCard = document.querySelector(".popup__form_type_add-card");
 const nameInput = document.querySelector(".popup__field_type_name");
@@ -27,7 +24,7 @@ const jobInput = document.querySelector(".popup__field_type_job");
 const cardsContainer = document.querySelector(".cards");
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
-const imagePopup = new PopupWithImage(popupImage);
+const imagePopup = new PopupWithImage(".popup_type_big-image");
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__description",
@@ -90,8 +87,8 @@ const submitCardForm = (data) => {
   cardPopup.close();
 };
 
-const cardPopup = new PopupWithForm(popupCard, submitCardForm);
-const profilePopup = new PopupWithForm(popupProfile, submitProfileForm);
+const cardPopup = new PopupWithForm(".popup_type_add-card", submitCardForm);
+const profilePopup = new PopupWithForm(".popup_type_profile", submitProfileForm);
 const section = new Section(
   { items: initialCards, renderer: renderCard },
   cardsContainer
