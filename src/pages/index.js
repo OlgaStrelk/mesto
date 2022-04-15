@@ -6,22 +6,6 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_disabled",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__error_visible",
-};
-
-const buttonEditProfile = document.querySelector(".profile__edit-button");
-const buttonAddCard = document.querySelector(".profile__add-button");
-const formProfile = document.querySelector(".popup__form_type_profile");
-const formCard = document.querySelector(".popup__form_type_add-card");
-const nameInput = document.querySelector(".popup__field_type_name");
-const jobInput = document.querySelector(".popup__field_type_job");
-const cardsContainer = document.querySelector(".cards");
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
 const imagePopup = new PopupWithImage(".popup_type_big-image");
