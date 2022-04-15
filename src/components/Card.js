@@ -17,7 +17,7 @@ export class Card {
     this._cardElement = null;
   };
 
-  _likeCardHandler = () => {
+  _handleCardLike = () => {
     this._cardLike.classList.toggle("cards__like_is-active");
   };
 
@@ -27,7 +27,7 @@ export class Card {
       .querySelector(".cards__remove")
       .addEventListener("click", this._handleCardremove);
 
-    this._cardLike.addEventListener("click", () => this._likeCardHandler());
+    this._cardLike.addEventListener("click", () => this._handleCardLike());
 
     this._cardImage.addEventListener("click", this._handleCardClick);
   }
