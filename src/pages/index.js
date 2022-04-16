@@ -66,6 +66,12 @@ const createCard = (data) => {
           cardDeletePopup.close();
         });
       });
+    },
+    (id) => {
+      api.addLike(id)
+      .then(res => {
+        alert(res)
+      })
     }
   );
   return card.getView();

@@ -18,6 +18,7 @@
 @import url("../blocks/cards/__caption/cards__caption.css");
 @import url("../blocks/cards/__title/cards__title.css");
 @import url("../blocks/cards/__like/cards__like.css");
+@import url("../blocks/cards/__like-count/cards__like-count.css");
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
 @import url("../blocks/popup/popup.css");
