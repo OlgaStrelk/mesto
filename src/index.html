@@ -10,7 +10,7 @@
 
     <title>Mesto</title>
 
-<!--    <link rel="stylesheet" href="./pages/index.css" />-->
+    <!--    <link rel="stylesheet" href="./pages/index.css" />-->
   </head>
   <body>
     <div class="page">
@@ -22,7 +22,7 @@
         <main class="content">
           <section class="profile">
             <div class="profile__name">
-              <h1 class="profile__title">Оля Стрелкова</h1>
+              <h1 class="profile__title"></h1>
             </div>
 
             <button
@@ -31,7 +31,7 @@
               aria-label="Редактировать профиль"
             ></button>
 
-            <p class="profile__description">Искусствоведка-исследовательница</p>
+            <p class="profile__description"></p>
 
             <div class="profile__user-pic"></div>
 
@@ -149,6 +149,27 @@
           </div>
         </div>
 
+        <div class="popup popup_type_delete-card">
+          <div class="popup__container">
+            <button
+              type="button"
+              class="popup__close popup__close_type_delete-card"
+              aria-label="Закрыть"
+            ></button>
+
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form
+              name="delete-form"
+              class="popup__form popup__form_type_delete-card"
+              novalidate
+            >
+              <button type="submit" class="popup__submit" aria-label="Создать">
+                Да
+              </button>
+            </form>
+          </div>
+        </div>
+
         <div class="popup popup_type_big-image">
           <div class="popup__container popup__container_type_img">
             <button
@@ -157,7 +178,7 @@
               aria-label="Закрыть"
             ></button>
 
-            <img class="popup__image" src="./images/user-pic.jpeg" />
+            <img class="popup__image" src="#" />
 
             <p class="popup__caption"></p>
           </div>
@@ -167,7 +188,7 @@
 
     <template id="card-template">
       <div class="cards__item">
-        <img src="./images/user-pic.jpeg" alt="" class="cards__image" />
+        <img src="#" alt="" class="cards__image" />
 
         <button type="button" class="cards__remove"></button>
 
@@ -179,6 +200,7 @@
             type="button"
             aria-label="Нравится"
           ></button>
+          <span class="cards__like-count"></span>
         </div>
       </div>
     </template>

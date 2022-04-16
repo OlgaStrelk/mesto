@@ -15,10 +15,16 @@ export class PopupWithForm extends Popup {
     return values;
   }
 
+  changeSubmitHandler(newSubmitHandler) {
+    this._handleSubmit = newSubmitHandler
+  }
+
   setEventListeners() {
     // добавлять обработчик сабмита формы.
     super.setEventListeners();
-    this._form.addEventListener("submit", () => {
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+
       this._handleSubmit(this._getInputValues());
     });
   }
