@@ -118,6 +118,7 @@ const profilePopup = new PopupWithForm(
   ".popup_type_profile",
   submitProfileForm
 );
+const userPicPopup = new PopupWithForm(".popup_type_edit-user-pic", () => {console.log("!")})
 
 const section = new Section(
   { items: [], renderer: renderCard },
@@ -129,6 +130,7 @@ imagePopup.setEventListeners();
 cardPopup.setEventListeners();
 profilePopup.setEventListeners();
 cardDeletePopup.setEventListeners();
+userPicPopup.setEventListeners();
 
 function openProfilePopup() {
   const data = userInfo.getUserInfo();

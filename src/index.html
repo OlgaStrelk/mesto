@@ -170,6 +170,38 @@
           </div>
         </div>
 
+        <div class="popup popup_type_edit-user-pic">
+          <div class="popup__container">
+            <button
+              type="button"
+              class="popup__close popup__close_type_edit-user-pic"
+              aria-label="Закрыть"
+            ></button>
+
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form
+              name="delete-form"
+              class="popup__form popup__form_type_delete-card"
+              novalidate
+            >
+            <input
+                required
+                type="url"
+                name="link"
+                class="popup__field"
+                id="form-field-user-pic"
+                placeholder="Ссылка на аватар"
+              />
+
+              <span id="form-field-user-pic-error" class="popup__error"></span>
+
+              <button type="submit" class="popup__submit" aria-label="Создать">
+                Сохранить
+              </button>
+            </form>
+          </div>
+        </div>
+
         <div class="popup popup_type_big-image">
           <div class="popup__container popup__container_type_img">
             <button
