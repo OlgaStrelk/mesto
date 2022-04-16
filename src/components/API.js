@@ -26,7 +26,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        about
+        about,
       }),
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
@@ -39,8 +39,17 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name,
-        link
+        link,
       }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .catch(console.log);
+  }
+
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .catch(console.log);

@@ -153,15 +153,20 @@
           <div class="popup__container">
             <button
               type="button"
-              class="popup__close popup__close_type_add-card"
+              class="popup__close popup__close_type_delete-card"
               aria-label="Закрыть"
             ></button>
 
             <h2 class="popup__title">Вы уверены?</h2>
-
-            <button type="submit" class="popup__submit" aria-label="Создать">
-              Да
-            </button>
+            <form
+              name="delete-form"
+              class="popup__form popup__form_type_delete-card"
+              novalidate
+            >
+              <button type="submit" class="popup__submit" aria-label="Создать">
+                Да
+              </button>
+            </form>
           </div>
         </div>
 
