@@ -5,6 +5,9 @@ export class Card {
     this._link = data.link;
     this._likes = data.likes;
     this._id = data.id;
+    this._userId = data.userId;
+    this._ownerId = data.ownerId;
+
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
   }
@@ -26,9 +29,11 @@ export class Card {
 
   _setEventListeners() {
     this._cardLike = this._cardElement.querySelector(".cards__like");
-    this._cardElement
-      .querySelector(".cards__remove")
-      .addEventListener("click", () => {this._handleDeleteClick(this._id)});
+    this._cardRemove = this._cardElement.querySelector(".cards__remove");
+
+    this._cardRemove.addEventListener("click", () => {
+      this._handleDeleteClick(this._id);
+    });
 
     this._cardLike.addEventListener("click", () => this._handleCardLike());
 
@@ -50,6 +55,10 @@ export class Card {
     this._setEventListeners();
 
     this._countLikes();
+
+    if (this._ownerId !== this._userId) {
+      this._cardRemove.style.display = "none";
+    }
 
     return this._cardElement;
   }

@@ -17,8 +17,12 @@ import {
 } from "../utils/consts.js";
 import { api } from "../components/Api.js";
 
+let userId;
+
 api.getProfile().then((res) => {
   userInfo.setUserInfo(res.name, res.about);
+
+  userId = res._id;
 });
 
 api.getInitialCards().then((cardList) => {
@@ -28,6 +32,8 @@ api.getInitialCards().then((cardList) => {
       link: data.link,
       likes: data.likes,
       id: data._id,
+      userId: userId,
+      ownerId: data.owner._id
     });
     section.addItem(card);
   });
@@ -56,9 +62,9 @@ const createCard = (data) => {
       cardDeletePopup.open();
       cardDeletePopup.changeSubmitHandler(() => {
         api.deleteCard(id).then(() => {
-          card.removeCard()
-          cardDeletePopup.close()
-        })
+          card.removeCard();
+          cardDeletePopup.close();
+        });
       });
     }
   );
@@ -87,6 +93,8 @@ const submitCardForm = (data) => {
       link: res.link,
       likes: res.likes,
       id: res._id,
+      userId: userId,
+      ownerId: res.owner._id
     });
     section.addItem(card);
     cardPopup.close();
