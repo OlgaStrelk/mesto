@@ -1,6 +1,6 @@
 .cards__title {
   margin: 0;
-  padding-top: 3px;
+  padding-top: 20px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29.05px;
@@ -9,4 +9,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
