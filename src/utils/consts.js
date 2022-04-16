@@ -42,4 +42,3 @@ export const validationConfig = {
   export const nameInput = document.querySelector(".popup__field_type_name");
   export const jobInput = document.querySelector(".popup__field_type_job");
   export const cardsContainer = document.querySelector(".cards");
-  

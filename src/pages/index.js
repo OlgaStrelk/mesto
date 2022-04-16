@@ -67,6 +67,7 @@ const createCard = (data) => {
 const renderCard = (data) => {
   const card = createCard(data);
   console.log("card", card);
+
   section.addItem(card);
 };
 
@@ -97,6 +98,7 @@ const profilePopup = new PopupWithForm(
   ".popup_type_profile",
   submitProfileForm
 );
+
 const section = new Section(
   { items: [], renderer: renderCard },
   cardsContainer
