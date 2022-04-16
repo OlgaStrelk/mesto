@@ -55,8 +55,9 @@ const createCard = (data) => {
     (id) => {
       cardDeletePopup.open();
       cardDeletePopup.changeSubmitHandler(() => {
-        api.deleteCard(id).then(res => {
-          console.log(res)
+        api.deleteCard(id).then(() => {
+          card.removeCard()
+          cardDeletePopup.close()
         })
       });
     }

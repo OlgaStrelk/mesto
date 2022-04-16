@@ -15,10 +15,10 @@ export class Card {
     this._cardImage.alt = this._name;
   }
 
-  // _handleCardremove = () => {
-  //   this._cardElement.remove();
-  //   this._cardElement = null;
-  // };
+  removeCard = () => {
+    this._cardElement.remove();
+    this._cardElement = null;
+  };
 
   _handleCardLike = () => {
     this._cardLike.classList.toggle("cards__like_is-active");
