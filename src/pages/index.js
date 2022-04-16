@@ -33,7 +33,7 @@ api.getInitialCards().then((cardList) => {
       likes: data.likes,
       id: data._id,
       userId: userId,
-      ownerId: data.owner._id
+      ownerId: data.owner._id,
     });
     section.addItem(card);
   });
@@ -68,10 +68,15 @@ const createCard = (data) => {
       });
     },
     (id) => {
-      api.addLike(id)
-      .then(res => {
-        alert(res)
-      })
+      if (card.isLiked()) {
+        api.deleteLike(id).then((res) => {
+          card.countLikes(res.likes);
+        });
+      } else {
+        api.addLike(id).then((res) => {
+          card.countLikes(res.likes);
+        });
+      }
     }
   );
   return card.getView();
@@ -100,7 +105,7 @@ const submitCardForm = (data) => {
       likes: res.likes,
       id: res._id,
       userId: userId,
-      ownerId: res.owner._id
+      ownerId: res.owner._id,
     });
     section.addItem(card);
     cardPopup.close();
