@@ -26,7 +26,7 @@
             </div>
 
             <button
-              class="profile__button_type_edit-description"
+              class="profile__button profile__button_type_edit-description"
               type="button"
               aria-label="Редактировать профиль"
             ></button>
@@ -34,12 +34,15 @@
             <p class="profile__description"></p>
 
             <div class="profile__user-pic">
-              <!--<div class="profile__overlay"></div>-->
-              <button class="profile__button_type_edit-user-pic"></button>
-              </div>
+              <button
+                class="profile__button profile__button_type_edit-user-pic"
+                type="button"
+                aria-label="Редактировать аватар"
+              ></button>
+            </div>
 
             <button
-              class="profile__button_type_add-card"
+              class="profile__button profile__button_type_add-card"
               type="button"
               aria-label="Добавить новое место"
             ></button>
@@ -187,7 +190,7 @@
               class="popup__form popup__form_type_edit-user-pic"
               novalidate
             >
-            <input
+              <input
                 required
                 type="url"
                 name="link"
@@ -240,6 +243,5 @@
       </div>
     </template>
 
-    <!--<script type="module" src="./pages/index.js"></script>-->
   </body>
 </html>
