@@ -1,0 +1,17 @@
+.profile__button_type_edit-user-pic {
+  width: 26px;
+  height: 26px;
+  box-sizing: border-box;
+  background: center center no-repeat url("../../../../images/editUse-pic.svg");
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+  position: absolute;
+  top: 47px;
+  right: 47px;
+  left: 47px;
+  bottom: 47px;
+  border: none;
+  padding: 0;
+}
+

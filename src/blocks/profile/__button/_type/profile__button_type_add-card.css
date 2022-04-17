@@ -1,4 +1,4 @@
-.profile__add-button {
+.profile__button_type_add-card {
   grid-column: 3;
   grid-row-start: 1;
   grid-row-end: 3;
@@ -7,7 +7,7 @@
   justify-self: end;
   align-self: center;
   box-sizing: border-box;
-  background: center center no-repeat url("../../../images/add-button.svg");
+  background: center center no-repeat url("../../../../images/add-button.svg");
   border: 2px solid white;
   opacity: 1;
   transition: opacity 0.5s linear;
@@ -15,19 +15,19 @@
   cursor: pointer;
 }
 
-.profile__add-button:hover {
+.profile__button_type_add-card:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 979px) {
-.profile__add-button {
+.profile__button_type_add-card {
   grid-column: 2;
   grid-row: 3;
   }
 }
 
 @media screen and (max-width: 596px) {
-  .profile__add-button {
+  .profile__button_type_add-card {
     width: 282px;
     height: 50px;
     align-self: center;

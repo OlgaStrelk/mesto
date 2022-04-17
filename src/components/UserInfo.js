@@ -15,4 +15,6 @@ export class UserInfo{
         this._nameElement.textContent = title
         this._jobElement.textContent = job
     }
+
+    
 }

@@ -9,6 +9,7 @@ import {
   validationConfig,
   buttonEditProfile,
   buttonAddCard,
+  buttonEditUserPic,
   formProfile,
   formCard,
   nameInput,

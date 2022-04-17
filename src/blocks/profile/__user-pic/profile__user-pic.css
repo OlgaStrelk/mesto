@@ -1,13 +1,34 @@
 .profile__user-pic {
   width: 120px;
   height: 120px;
-  background: center center no-repeat url('../../../images/userPic.jpeg');
+  background: center center no-repeat url("../../../images/userPic.jpeg");
   background-size: cover;
   border-radius: 60px;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
+  opacity: 1;
+  position: relative;
+  z-index: 0;
+}
+
+.profile__user-pic::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  margin: 0;
+  padding: 0;
+  background-color: #2a2c2f;
+  opacity: 0.3;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.profile__user-pic:hover::before {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 596px) {
