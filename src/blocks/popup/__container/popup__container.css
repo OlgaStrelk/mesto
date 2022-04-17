@@ -6,6 +6,7 @@
   padding: 34px 36px 37px;
   box-sizing: border-box;
   position: absolute;
+  min-height: 181px;
 }
 
 @media screen and (max-width: 596px) {

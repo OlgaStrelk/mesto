@@ -12,6 +12,7 @@ import {
   buttonEditUserPic,
   formProfile,
   formCard,
+  formUserPic,
   nameInput,
   jobInput,
   cardsContainer,
@@ -42,6 +43,7 @@ api.getInitialCards().then((cardList) => {
 
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
+const formUserPicValidator = new FormValidator(validationConfig, formUserPic);
 const imagePopup = new PopupWithImage(".popup_type_big-image");
 
 const userInfo = new UserInfo({
@@ -53,6 +55,7 @@ const userInfo = new UserInfo({
 
 formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
+formUserPicValidator.enableValidation();
 
 const createCard = (data) => {
   const card = new Card(
@@ -93,36 +96,50 @@ const renderCard = (data) => {
 };
 
 const submitProfileForm = (data) => {
-  console.log(data)
+  profilePopup.showLoading();
   const { name, occupation } = data;
-  api.editProfile(name, occupation).then((res) => {
-    userInfo.setUserInfo(res.name, res.about, res.avatar);
-  });
-  profilePopup.close();
+  api
+    .editProfile(name, occupation)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      profilePopup.close();
+    });
 };
 
 const submitCardForm = (data) => {
-  api.addCard(data["place"], data.link).then((res) => {
-    const card = createCard({
-      name: res.name,
-      link: res.link,
-      likes: res.likes,
-      id: res._id,
-      userId: userId,
-      ownerId: res.owner._id,
+  cardPopup.showLoading();
+
+  api
+    .addCard(data["place"], data.link)
+    .then((res) => {
+      const card = createCard({
+        name: res.name,
+        link: res.link,
+        likes: res.likes,
+        id: res._id,
+        userId: userId,
+        ownerId: res.owner._id,
+      });
+      section.addItem(card);
+    })
+    .then(() => {
+      cardPopup.close();
     });
-    section.addItem(card);
-    cardPopup.close();
-  });
 };
 
 const submitUserPicForm = (data) => {
-  const { link } = data
-  api.changeUserPic(link).then((res) => {
-    console.log(link, res.avatar)
-    userInfo.setUserInfo(res.name, res.about, res.avatar);
-  });
-  userPicPopup.close();
+  userPicPopup.showLoading();
+  const { link } = data;
+  api
+    .changeUserPic(link)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      userPicPopup.close();
+    });
 };
 
 const cardPopup = new PopupWithForm(".popup_type_add-card", submitCardForm);
@@ -150,6 +167,7 @@ userPicPopup.setEventListeners();
 userInfo.setEventListeners();
 
 function openProfilePopup() {
+  profilePopup.returnInitialButtonContent();
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.job;
@@ -157,12 +175,16 @@ function openProfilePopup() {
 }
 
 function openCardPopup() {
+  cardPopup.returnInitialButtonContent();
   formCardValidator.disableSubmitButton();
   formCardValidator.resetErrors();
   cardPopup.open();
 }
 
 function openUserPicPopup() {
+  userPicPopup.returnInitialButtonContent();
+  formUserPicValidator.disableSubmitButton();
+  formUserPicValidator.resetErrors();
   userPicPopup.open();
 }
 
