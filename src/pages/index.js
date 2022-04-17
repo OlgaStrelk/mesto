@@ -21,8 +21,8 @@ import { api } from "../components/Api.js";
 let userId;
 
 api.getProfile().then((res) => {
-  userInfo.setUserInfo(res.name, res.about);
-
+  console.log(res.name, res.about, res.avatar);
+  userInfo.setUserInfo(res.name, res.about, res.avatar);
   userId = res._id;
 });
 
@@ -47,6 +47,8 @@ const imagePopup = new PopupWithImage(".popup_type_big-image");
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__title",
   profileJobSelector: ".profile__description",
+  userPicSelector: ".profile__user-pic",
+  editUserPicButtonSelector: ".profile__button_type_edit-user-pic",
 });
 
 formProfileValidator.enableValidation();
@@ -91,9 +93,10 @@ const renderCard = (data) => {
 };
 
 const submitProfileForm = (data) => {
+  console.log(data)
   const { name, occupation } = data;
   api.editProfile(name, occupation).then((res) => {
-    userInfo.setUserInfo(res.name, res.about);
+    userInfo.setUserInfo(res.name, res.about, res.avatar);
   });
   profilePopup.close();
 };
@@ -113,13 +116,25 @@ const submitCardForm = (data) => {
   });
 };
 
+const submitUserPicForm = (data) => {
+  const { link } = data
+  api.changeUserPic(link).then((res) => {
+    console.log(link, res.avatar)
+    userInfo.setUserInfo(res.name, res.about, res.avatar);
+  });
+  userPicPopup.close();
+};
+
 const cardPopup = new PopupWithForm(".popup_type_add-card", submitCardForm);
 const cardDeletePopup = new PopupWithForm(".popup_type_delete-card");
 const profilePopup = new PopupWithForm(
   ".popup_type_profile",
   submitProfileForm
 );
-const userPicPopup = new PopupWithForm(".popup_type_edit-user-pic", () => {console.log("!")})
+const userPicPopup = new PopupWithForm(
+  ".popup_type_edit-user-pic",
+  submitUserPicForm
+);
 
 const section = new Section(
   { items: [], renderer: renderCard },
@@ -132,6 +147,7 @@ cardPopup.setEventListeners();
 profilePopup.setEventListeners();
 cardDeletePopup.setEventListeners();
 userPicPopup.setEventListeners();
+userInfo.setEventListeners();
 
 function openProfilePopup() {
   const data = userInfo.getUserInfo();
@@ -146,6 +162,12 @@ function openCardPopup() {
   cardPopup.open();
 }
 
+function openUserPicPopup() {
+  userPicPopup.open();
+}
+
 buttonEditProfile.addEventListener("click", openProfilePopup);
 
 buttonAddCard.addEventListener("click", openCardPopup);
+
+buttonEditUserPic.addEventListener("click", openUserPicPopup);

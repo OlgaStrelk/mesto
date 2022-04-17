@@ -1,7 +1,6 @@
 .profile__user-pic {
   width: 120px;
   height: 120px;
-  background: center center no-repeat url("../../../images/userPic.jpeg");
   background-size: cover;
   border-radius: 60px;
   grid-column-start: 1;

@@ -20,7 +20,6 @@ export class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    // добавлять обработчик сабмита формы.
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
