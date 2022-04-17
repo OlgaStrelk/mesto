@@ -17,7 +17,7 @@
 .cards__item{background-color:#fff;border-radius:10px;color:#000;margin:0;overflow:hidden;position:relative}
 .cards__image{cursor:pointer;display:block;height:282px;margin:0;padding:0;transition:opacity .5s linear;width:282px;z-index:0}.cards__image:hover{opacity:.9}
 .cards__remove{background:50% no-repeat url(images/remove.svg);border:none;cursor:pointer;height:32px;opacity:1;position:absolute;right:4px;top:8px;transition:opacity .5s linear;width:32px;z-index:1}.cards__remove:hover{opacity:.6}
-.cards__caption{align-items:center;align-items:baseline;box-sizing:border-box;display:grid;grid-template-columns:1fr 42px;margin:0;max-height:79px;max-width:282px;min-height:76px;padding-bottom:32px;padding-top:5px}
+.cards__caption{align-items:baseline;box-sizing:border-box;display:grid;grid-template-columns:1fr 42px;margin:0;max-height:79px;max-width:282px;min-height:76px;padding-bottom:32px;padding-top:5px}
 .cards__title{font-size:24px;font-weight:900;grid-column:1;grid-row-end:3;grid-row-start:1;line-height:29.05px;margin:0 0 0 21px;max-width:210px;overflow:hidden;padding-top:20px;text-overflow:ellipsis;white-space:nowrap}
 .cards__like{background:50% no-repeat url(images/like.svg);border:none;cursor:pointer;grid-column:2;height:19px;margin:0;opacity:1;padding-top:35px;transition:opacity .5s linear;width:22px}.cards__like:hover{opacity:.5}
 .cards__like-count{font-size:13px;font-weight:400;grid-column:2;padding-left:8px}
