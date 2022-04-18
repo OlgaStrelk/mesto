@@ -21,25 +21,23 @@ import { api } from "../components/Api.js";
 
 let userId;
 
-api.getProfile().then((res) => {
-  console.log(res.name, res.about, res.avatar);
-  userInfo.setUserInfo(res.name, res.about, res.avatar);
-  userId = res._id;
-});
-
-api.getInitialCards().then((cardList) => {
-  cardList.forEach((data) => {
-    const card = createCard({
-      name: data.name,
-      link: data.link,
-      likes: data.likes,
-      id: data._id,
-      userId: userId,
-      ownerId: data.owner._id,
+Promise.all([api.getProfile(), api.getInitialCards()])
+  .then((values) => {
+    userId = values[0]._id;
+    let cardList = values[1];
+    userInfo.setUserInfo(values[0].name, values[0].about, values[0].avatar);
+    cardList.forEach((data) => {
+      renderCard({
+        name: data.name,
+        link: data.link,
+        likes: data.likes,
+        id: data._id,
+        userId: userId,
+        ownerId: data.owner._id,
+      });
     });
-    section.addItem(card);
-  });
-});
+  })
+  .catch((err) => console.log(`Ошибка: ${err}`));
 
 const formProfileValidator = new FormValidator(validationConfig, formProfile);
 const formCardValidator = new FormValidator(validationConfig, formCard);
@@ -67,21 +65,30 @@ const createCard = (data) => {
     (id) => {
       cardDeletePopup.open();
       cardDeletePopup.changeSubmitHandler(() => {
-        api.deleteCard(id).then(() => {
-          card.removeCard();
-          cardDeletePopup.close();
-        });
+        api
+          .deleteCard(id)
+          .then(() => {
+            card.removeCard();
+            cardDeletePopup.close();
+          })
+          .catch((err) => console.log(`Ошибка: ${err}`));
       });
     },
     (id) => {
       if (card.isLiked()) {
-        api.deleteLike(id).then((res) => {
-          card.countLikes(res.likes);
-        });
+        api
+          .deleteLike(id)
+          .then((res) => {
+            card.countLikes(res.likes);
+          })
+          .catch((err) => console.log(`Ошибка: ${err}`));
       } else {
-        api.addLike(id).then((res) => {
-          card.countLikes(res.likes);
-        });
+        api
+          .addLike(id)
+          .then((res) => {
+            card.countLikes(res.likes);
+          })
+          .catch((err) => console.log(`Ошибка: ${err}`));
       }
     }
   );
@@ -90,31 +97,28 @@ const createCard = (data) => {
 
 const renderCard = (data) => {
   const card = createCard(data);
-  console.log("card", card);
-
   section.addItem(card);
 };
 
 const submitProfileForm = (data) => {
-  profilePopup.showLoading();
   const { name, occupation } = data;
   api
     .editProfile(name, occupation)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
-    })
-    .then(() => {
       profilePopup.close();
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
+    .finally(() => {
+      profilePopup.showLoading();
     });
 };
 
 const submitCardForm = (data) => {
-  cardPopup.showLoading();
-
   api
     .addCard(data["place"], data.link)
     .then((res) => {
-      const card = createCard({
+      renderCard({
         name: res.name,
         link: res.link,
         likes: res.likes,
@@ -122,23 +126,25 @@ const submitCardForm = (data) => {
         userId: userId,
         ownerId: res.owner._id,
       });
-      section.addItem(card);
-    })
-    .then(() => {
       cardPopup.close();
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
+    .finally(() => {
+      cardPopup.showLoading();
     });
 };
 
 const submitUserPicForm = (data) => {
-  userPicPopup.showLoading();
   const { link } = data;
   api
     .changeUserPic(link)
     .then((res) => {
       userInfo.setUserInfo(res.name, res.about, res.avatar);
-    })
-    .then(() => {
       userPicPopup.close();
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
+    .finally(() => {
+      userPicPopup.showLoading();
     });
 };
 

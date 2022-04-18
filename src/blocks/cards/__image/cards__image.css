@@ -7,6 +7,7 @@
   z-index: 0;
   transition: opacity 0.5s linear;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .cards__image:hover {

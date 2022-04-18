@@ -7,17 +7,13 @@ class Api {
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   editProfile(name, about) {
@@ -28,9 +24,7 @@ class Api {
         name,
         about,
       }),
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   addCard(name, link) {
@@ -41,36 +35,28 @@ class Api {
         name,
         link,
       }),
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
   changeUserPic(avatar) {
@@ -78,10 +64,9 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar})
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .catch(console.log);
+        avatar,
+      }),
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 }
 
