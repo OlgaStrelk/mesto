@@ -26,16 +26,7 @@ Promise.all([api.getProfile(), api.getInitialCards()])
     userId = values[0]._id;
     let cardList = values[1];
     userInfo.setUserInfo(values[0].name, values[0].about, values[0].avatar);
-    cardList.forEach((data) => {
-      renderCard({
-        name: data.name,
-        link: data.link,
-        likes: data.likes,
-        id: data._id,
-        userId: userId,
-        ownerId: data.owner._id,
-      });
-    });
+    section.renderElements(cardList);
   })
   .catch((err) => console.log(`Ошибка: ${err}`));
 
@@ -159,11 +150,7 @@ const userPicPopup = new PopupWithForm(
   submitUserPicForm
 );
 
-const section = new Section(
-  { items: [], renderer: renderCard },
-  cardsContainer
-);
-section.renderElements();
+const section = new Section(renderCard, cardsContainer);
 
 imagePopup.setEventListeners();
 cardPopup.setEventListeners();
