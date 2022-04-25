@@ -47,20 +47,14 @@ formCardValidator.enableValidation();
 formUserPicValidator.enableValidation();
 
 const createCard = (data) => {
+  console.log(data)
   const card = new Card({ 
-
     name: data.name, 
-
     link: data.link, 
-
     likes: data.likes, 
-
     id: data._id, 
-
     userId: userId, 
-
-    ownerId: data.owner._id, 
-
+    ownerId: data.owner ? data.owner._id: data.ownerId, 
   },
     "#card-template",
     () => {
