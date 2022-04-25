@@ -47,8 +47,21 @@ formCardValidator.enableValidation();
 formUserPicValidator.enableValidation();
 
 const createCard = (data) => {
-  const card = new Card(
-    data,
+  const card = new Card({ 
+
+    name: data.name, 
+
+    link: data.link, 
+
+    likes: data.likes, 
+
+    id: data._id, 
+
+    userId: userId, 
+
+    ownerId: data.owner._id, 
+
+  },
     "#card-template",
     () => {
       imagePopup.open(data.link, data.name);
@@ -109,6 +122,7 @@ const submitCardForm = (data) => {
   api
     .addCard(data["place"], data.link)
     .then((res) => {
+      console.log(res)
       renderCard({
         name: res.name,
         link: res.link,
