@@ -115,14 +115,7 @@ const submitCardForm = (data) => {
   api
     .addCard(data["place"], data.link)
     .then((res) => {
-      renderCard({
-        name: res.name,
-        link: res.link,
-        likes: res.likes,
-        id: res._id,
-        userId: userId,
-        ownerId: res.owner._id,
-      });
+      renderCard(res);
       cardPopup.close();
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
