@@ -24,7 +24,7 @@ let userId;
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then((values) => {
     userId = values[0]._id;
-    let cardList = values[1];
+    let cardList = values[1].reverse();
     userInfo.setUserInfo(values[0].name, values[0].about, values[0].avatar);
     section.renderElements(cardList);
   })
@@ -47,7 +47,6 @@ formCardValidator.enableValidation();
 formUserPicValidator.enableValidation();
 
 const createCard = (data) => {
-  console.log(data)
   const card = new Card({ 
     name: data.name, 
     link: data.link, 
@@ -116,7 +115,6 @@ const submitCardForm = (data) => {
   api
     .addCard(data["place"], data.link)
     .then((res) => {
-      console.log(res)
       renderCard({
         name: res.name,
         link: res.link,
