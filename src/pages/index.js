@@ -86,7 +86,14 @@ const createCard = (data) => {
 };
 
 const renderCard = (data) => {
-  const card = createCard(data);
+  const card = createCard({
+    name: data.name,
+    link: data.link,
+    likes: data.likes,
+    id: data._id,
+    userId: userId,
+    ownerId: data.owner._id,
+  }); 
   section.addItem(card);
 };
 
