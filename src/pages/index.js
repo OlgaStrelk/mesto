@@ -24,7 +24,7 @@ let userId;
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then((values) => {
     userId = values[0]._id;
-    let cardList = values[1].reverse();
+    let cardList = values[1];
     userInfo.setUserInfo(values[0].name, values[0].about, values[0].avatar);
     section.renderElements(cardList);
   })
