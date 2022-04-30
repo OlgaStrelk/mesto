@@ -1,4 +1,4 @@
-export class Card {  
+export class Card { 
   constructor(
     data,
     cardTemplateSelector,
