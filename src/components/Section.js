@@ -1,5 +1,5 @@
 //const cardsContainer = document.querySelector(".cards");
-//items — это массив данных, которые нужно добавить на страницу при инициализации класса.
+//items — это массив данных, которые нужно добавить на страницу при иници
 
 export class Section {
   constructor( renderer, container) {
