@@ -1,6 +1,6 @@
 //const cardsContainer = document.querySelector(".cards");
 //items — это массив данных, которые нужно добавить на страницу при инициализации класса.
-//Свойство renderer — это функция, которая отвечает за создание и отрисовку да
+//Свойство renderer — это функция, которая отвечает за создание и 
 export class Section {
   constructor( renderer, container) {
     this._container = container;
