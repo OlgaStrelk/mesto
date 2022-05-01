@@ -1,6 +1,4 @@
 //const cardsContainer = document.querySelector(".cards");
-//items — это массив данных, которые нужно добавить на 
-
 export class Section {
   constructor( renderer, container) {
     this._container = container;
