@@ -1,10 +1,10 @@
 import "./index.css";
-import { FormValidator } from "../components/FormValidator.js";
-import { Card } from "../components/Card.js";
-import { Section } from "../components/Section.js";
-import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
-import { UserInfo } from "../components/UserInfo.js";
+import { FormValidator } from "../components/FormValidator";
+import { Card } from "../components/Card";
+import { Section } from "../components/Section";
+import { PopupWithImage } from "../components/PopupWithImage";
+import { PopupWithForm } from "../components/PopupWithForm";
+import { UserInfo } from "../components/UserInfo";
 import {
   validationConfig,
   buttonEditProfile,
@@ -16,8 +16,8 @@ import {
   nameInput,
   jobInput,
   cardsContainer,
-} from "../utils/consts.js";
-import { api } from "../components/Api.js";
+} from "../utils/consts";
+import { api } from "../components/API";
 
 let userId;
 
@@ -46,46 +46,54 @@ formProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 formUserPicValidator.enableValidation();
 
-const createCard = (data) => {
-  const card = new Card(data,
-    "#card-template",
-    () => {
-      imagePopup.open(data.link, data.name);
-    },
-    (id) => {
-      cardDeletePopup.open();
-      cardDeletePopup.changeSubmitHandler(() => {
-        api
-          .deleteCard(id)
-          .then(() => {
-            card.removeCard();
-            cardDeletePopup.close();
-          })
-          .catch((err) => console.log(`Ошибка: ${err}`));
-      });
-    },
-    (id) => {
-      if (card.isLiked()) {
-        api
-          .deleteLike(id)
-          .then((res) => {
-            card.countLikes(res.likes);
-          })
-          .catch((err) => console.log(`Ошибка: ${err}`));
-      } else {
-        api
-          .addLike(id)
-          .then((res) => {
-            card.countLikes(res.likes);
-          })
-          .catch((err) => console.log(`Ошибка: ${err}`));
-      }
-    }
-  );
-  return card.getView();
+type Card = { 
+  name: string; 
+  link: string; 
+  likes?: any; 
+  id?: string; 
+  userId?: string; 
+  ownerId?: string; 
+}
+
+
+const createCard = (data: Card): Element => {
+    const card = new Card(
+        data,
+        "#card-template",
+        () => {
+            imagePopup.open(data.link, data.name);
+        },
+        (id) => {
+            cardDeletePopup.open();
+            cardDeletePopup.changeSubmitHandler(() => {
+                api.deleteCard(id)
+                    .then(() => {
+                        card.removeCard();
+                        cardDeletePopup.close();
+                    })
+                    .catch((err) => console.log(`Ошибка: ${err}`));
+            });
+        },
+        (id) => {
+            if (card.isLiked()) {
+                api.deleteLike(id)
+                    .then((res) => {
+                        card.countLikes(res.likes);
+                    })
+                    .catch((err) => console.log(`Ошибка: ${err}`));
+            } else {
+                api.addLike(id)
+                    .then((res) => {
+                        card.countLikes(res.likes);
+                    })
+                    .catch((err) => console.log(`Ошибка: ${err}`));
+            }
+        }
+    );
+    return card.getView();
 };
 
-const renderCard = (data) => {
+const renderCard = (data): void => {
   const card = createCard({
     name: data.name,
     link: data.link,
@@ -97,21 +105,25 @@ const renderCard = (data) => {
   section.addItem(card);
 };
 
-const submitProfileForm = (data) => {
-  const { name, occupation } = data;
-  api
-    .editProfile(name, occupation)
-    .then((res) => {
-      userInfo.setUserInfo(res.name, res.about, res.avatar);
-      profilePopup.close();
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`))
-    .finally(() => {
-      profilePopup.showLoading();
-    });
+type Profile = { 
+  name: string; 
+  occupation: string; }
+
+
+const submitProfileForm = (data: Profile): void => {
+    const { name, occupation } = data;
+    api.editProfile(name, occupation)
+        .then((res) => {
+            userInfo.setUserInfo(res.name, res.about, res.avatar);
+            profilePopup.close();
+        })
+        .catch((err) => console.log(`Ошибка: ${err}`))
+        .finally(() => {
+            profilePopup.showLoading();
+        });
 };
 
-const submitCardForm = (data) => {
+const submitCardForm = (data): void => {
   api
     .addCard(data["place"], data.link)
     .then((res) => {
@@ -124,7 +136,7 @@ const submitCardForm = (data) => {
     });
 };
 
-const submitUserPicForm = (data) => {
+const submitUserPicForm = (data: { link: string; }): void => {
   const { link } = data;
   api
     .changeUserPic(link)
