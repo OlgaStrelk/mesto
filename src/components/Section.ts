@@ -1,5 +1,7 @@
 //const cardsContainer = document.querySelector(".cards");
 export class Section {
+  private _container: any;
+  private _renderer: any;
   constructor( renderer, container) {
     this._container = container;
     this._renderer = renderer;
