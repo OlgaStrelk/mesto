@@ -21,6 +21,10 @@ export const formCard = document.querySelector(".popup__form_type_add-card");
 export const formUserPic = document.querySelector(
   ".popup__form_type_edit-user-pic"
 );
-export const nameInput = document.querySelector(".popup__field_type_name");
-export const jobInput = document.querySelector(".popup__field_type_job");
+export const nameInput: HTMLInputElement = document.querySelector(
+    ".popup__field_type_name"
+);
+export const jobInput: HTMLInputElement = document.querySelector(
+    ".popup__field_type_job"
+);
 export const cardsContainer = document.querySelector(".cards");
