@@ -1,4 +1,17 @@
 export class Card {
+  private _cardTemplate: any;
+  private _name: string;
+  private _link: string;
+  private _likes: any;
+  private _id: string;
+  private _userId: string;
+  private _ownerId: string;
+  private _handleCardClick: any;
+  private _handleDeleteClick: any;
+  private _cardElement: Element;
+  private _cardImage: Record<string, any>;
+  private _cardLike: any;
+  private _cardRemove: any;
   constructor(
     data,
     cardTemplateSelector,
@@ -16,7 +29,7 @@ export class Card {
 
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
-    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleLikeClick;
   }
 
   _fillCard() {
@@ -58,6 +71,9 @@ export class Card {
     );
 
     this._cardImage.addEventListener("click", this._handleCardClick);
+  }
+  private _handleLikeClick(_id: string) {
+    throw new Error("Method not implemented.");
   }
 
   countLikes(newLikes) {
