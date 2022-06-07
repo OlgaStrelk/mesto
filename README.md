@@ -49,4 +49,4 @@ https://olgastrelk.github.io/mesto/
 * adding content
 * ability to like
 * content removal
-* data exchange with the API
+* data exchange with the API 
