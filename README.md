@@ -47,6 +47,6 @@ https://olgastrelk.github.io/mesto/
 **implemented in JS:**
 * form editing
 * adding content
-* ability to like
+* option to like
 * content removal
 * data exchange with the API 
