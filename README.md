@@ -23,7 +23,7 @@
 * обмен данными с сервером
 
 **В разработке:**
-* реализация проекта на TypeScript (смотри ветку typescript)
+* [реализация проекта на TypeScript](https://github.com/OlgaStrelk/Typescript-Mesto)
 
 ### Демоверсия проекта:
 https://olgastrelk.github.io/mesto/
